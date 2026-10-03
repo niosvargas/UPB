@@ -1,0 +1,834 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Del Ágora al Cosmos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;1,6..96,500;1,6..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: columna dórica vertical (eje del tiempo) que atraviesa tres periodos + antecedentes y legado; regla de escala proporcional fija arriba. */
+:root{
+  --upb-red:#E60015;      /* rojo UPB ajustado para texto sobre claro */
+  --upb-red-brand:#FF0017;
+  --upb-gold:#C99412;     /* oro UPB oscurecido para legibilidad en claro */
+  --upb-gold-brand:#FFCA45;
+  --ink:#141210;
+  --bg:#F4F3F1;
+  --surface:#FFFFFF;
+  --surface-2:#ECEAE6;
+  --fg:#1A1714;
+  --muted:#5E5850;
+  --line:#D6D2CB;
+  --spine:#1A1714;
+  --c-pol:#E60015;
+  --c-cul:#B07F00;
+  --c-fil:#1A1714;
+  --shadow:0 1px 2px rgba(20,18,16,.06),0 8px 24px -12px rgba(20,18,16,.18);
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --upb-red:#FF3346; --upb-gold:#FFCA45;
+    --bg:#0E0D0C; --surface:#181614; --surface-2:#211F1C;
+    --fg:#F2EFEA; --muted:#A79F94; --line:#33302B; --spine:#FFCA45;
+    --c-pol:#FF3346; --c-cul:#FFCA45; --c-fil:#F2EFEA;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --upb-red:#FF3346; --upb-gold:#FFCA45;
+  --bg:#0E0D0C; --surface:#181614; --surface-2:#211F1C;
+  --fg:#F2EFEA; --muted:#A79F94; --line:#33302B; --spine:#FFCA45;
+  --c-pol:#FF3346; --c-cul:#FFCA45; --c-fil:#F2EFEA;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--upb-gold-brand);outline-offset:3px;border-radius:4px}
+
+/* ---------- Banda institucional ---------- */
+.inst{background:var(--ink);color:#fff;border-bottom:4px solid var(--upb-red-brand)}
+.inst .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:14px}
+.logo-plate{background:#fff;border-radius:6px;padding:8px 14px;display:flex;align-items:center}
+.logo-plate svg{width:210px;height:auto;display:block}
+.inst-meta{text-align:right;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.7}
+.inst-meta b{color:var(--upb-gold-brand);font-weight:600}
+@media (max-width:620px){.inst-meta{text-align:left}}
+
+/* ---------- Héroe ---------- */
+.hero{position:relative;overflow:hidden;padding-block:clamp(48px,8vw,96px) clamp(36px,5vw,56px)}
+.hero::before{content:"ΟΙΚΟΥΜΕΝΗ";position:absolute;right:-2%;top:8%;font-family:var(--f-display);font-weight:800;font-size:clamp(80px,17vw,230px);letter-spacing:.04em;color:var(--fg);opacity:.045;white-space:nowrap;pointer-events:none;line-height:1}
+.eyebrow{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--upb-red);font-weight:600;margin:0 0 18px}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(44px,8.4vw,104px);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance;max-width:14ch}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--upb-red)}
+.hero h1 .amp{font-weight:500;font-style:italic;color:var(--upb-gold)}
+.hero .sub{font-family:var(--f-display);font-style:italic;font-size:clamp(20px,2.4vw,27px);line-height:1.35;margin:22px 0 0;max-width:34ch;color:var(--muted)}
+.byline{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;font-size:15px;color:var(--muted)}
+.byline strong{color:var(--fg)}
+.meander{height:14px;margin-top:40px;background-repeat:repeat-x;background-size:28px 14px;opacity:.9}
+.lede{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,56px);margin-top:36px;align-items:start}
+.lede p{margin:0 0 14px;max-width:62ch}
+.lede p:first-child::first-letter{font-family:var(--f-display);font-weight:800;float:left;font-size:4.1em;line-height:.8;padding:6px 10px 0 0;color:var(--upb-red)}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--fg)}
+.fact{padding:14px 12px 14px 0;border-bottom:1px solid var(--line)}
+.fact:nth-child(odd){border-right:1px solid var(--line)}
+.fact:nth-child(even){padding-left:14px}
+.fact .n{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1;font-variant-numeric:lining-nums tabular-nums}
+.fact .n small{font-family:var(--f-mono);font-size:13px;font-weight:400;color:var(--muted);margin-left:4px}
+.fact .l{font-size:13.5px;color:var(--muted);line-height:1.35;margin-top:6px}
+@media (max-width:820px){.lede{grid-template-columns:1fr}}
+
+/* ---------- Regla temporal fija ---------- */
+.ruler-shell{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-block:1px solid var(--line)}
+.ruler-shell .wrap{padding-block:10px 12px}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:10px}
+.controls .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.chip{appearance:none;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);font:600 13.5px/1 var(--f-body);padding:8px 13px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .15s,background .15s,transform .1s}
+.chip:hover{border-color:var(--fg)}
+.chip:active{transform:scale(.97)}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="false"]{opacity:.45;background:transparent}
+.chip.ghost{margin-left:auto;border-style:dashed}
+.ruler{position:relative;height:46px;overflow-x:auto;overflow-y:hidden}
+.ruler-track{position:relative;height:100%;min-width:560px}
+.band{position:absolute;top:0;height:16px;border-radius:3px;display:flex;align-items:center;padding-inline:6px;font:600 10.5px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;cursor:pointer;border:0;color:var(--fg)}
+.band.pre{background:var(--surface-2);color:var(--muted)}
+.band.p1{background:color-mix(in srgb,var(--upb-red-brand) 22%,var(--surface))}
+.band.p2{background:color-mix(in srgb,var(--upb-gold-brand) 45%,var(--surface))}
+.band.p3{background:color-mix(in srgb,var(--fg) 16%,var(--surface))}
+.band.on{outline:2px solid var(--fg);outline-offset:1px}
+.axis{position:absolute;left:0;right:0;top:26px;height:1px;background:var(--line)}
+.tick{position:absolute;top:22px;font:400 10px/1 var(--f-mono);color:var(--muted);transform:translateX(-50%);padding-top:12px;font-variant-numeric:tabular-nums}
+.tick::before{content:"";position:absolute;left:50%;top:0;width:1px;height:8px;background:var(--line)}
+.pin{position:absolute;top:21px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:var(--c);border:2px solid var(--bg);cursor:pointer;padding:0;transition:transform .15s}
+.pin:hover,.pin.hot{transform:scale(1.6);z-index:2}
+.pin[hidden]{display:none}
+
+/* ---------- Línea del tiempo ---------- */
+main{padding-block:28px 40px}
+.era{position:relative;margin:56px 0 28px;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:end;scroll-margin-top:130px}
+.era .num{font-family:var(--f-display);font-weight:800;font-style:italic;font-size:clamp(64px,10vw,124px);line-height:.8;color:var(--upb-red);grid-row:span 2}
+.era.pre .num,.era.leg .num{color:var(--upb-gold)}
+.era .range{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+.era h2{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,3.6vw,40px);line-height:1.08;margin:0;text-wrap:balance}
+.era p{grid-column:1/-1;margin:14px 0 0;max-width:72ch;color:var(--muted);font-size:16.5px}
+.era::after{content:"";grid-column:1/-1;height:2px;background:linear-gradient(90deg,var(--fg) 0 64px,var(--line) 64px);margin-top:14px}
+
+.tl{position:relative;list-style:none;margin:0;padding:8px 0}
+.tl::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:10px;margin-left:-5px;
+  background:repeating-linear-gradient(90deg,var(--spine) 0 2px,transparent 2px 4px);opacity:.55;border-radius:2px}
+.ev{position:relative;width:50%;padding:10px 42px 10px 0;scroll-margin-top:140px}
+.ev:nth-child(even){margin-left:50%;padding:10px 0 10px 42px}
+.ev .node{position:absolute;top:30px;right:-9px;width:18px;height:18px;transform:rotate(45deg);background:var(--c);border:3px solid var(--bg);z-index:1}
+.ev:nth-child(even) .node{right:auto;left:-9px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--c)}
+.ev:hover .card{transform:translateY(-2px);border-color:color-mix(in srgb,var(--c) 50%,var(--line))}
+.ev.hot .card{border-color:var(--c);box-shadow:0 0 0 2px var(--c),var(--shadow)}
+.card-btn{appearance:none;background:none;border:0;color:inherit;font:inherit;text-align:left;width:100%;padding:18px 22px 16px 24px;cursor:pointer;display:block}
+.date{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.date .y{font-family:var(--f-display);font-weight:800;font-size:28px;line-height:1;font-variant-numeric:lining-nums}
+.date .tag{font:600 10.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--c);border:1px solid currentColor;padding:4px 7px;border-radius:2px}
+.card h3{font-family:var(--f-display);font-weight:700;font-size:20.5px;line-height:1.2;margin:10px 0 6px;text-wrap:balance}
+.card .s{margin:0;color:var(--muted);font-size:15.5px;line-height:1.5}
+.more{display:flex;align-items:center;gap:6px;margin-top:10px;font:600 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--fg)}
+.more svg{transition:transform .2s}
+.card-btn[aria-expanded="true"] .more svg{transform:rotate(45deg)}
+.detail{padding:0 22px 18px 24px;border-top:1px dashed var(--line);margin:0}
+.detail p{margin:14px 0 0;font-size:15.5px;max-width:62ch}
+.detail .terms{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.detail .terms span{font:italic 500 13.5px/1 var(--f-display);background:var(--surface-2);padding:6px 9px;border-radius:2px}
+.detail cite{display:block;margin-top:12px;font:400 12px/1.4 var(--f-mono);color:var(--muted);font-style:normal}
+.ev[hidden]{display:none}
+
+@media (max-width:760px){
+  .tl::before{left:9px}
+  .ev,.ev:nth-child(even){width:100%;margin-left:0;padding:8px 0 8px 36px}
+  .ev .node,.ev:nth-child(even) .node{left:1px;right:auto}
+  .era{scroll-margin-top:150px}
+}
+
+/* ---------- Escuelas ---------- */
+section.block{padding-block:clamp(48px,7vw,80px);border-top:1px solid var(--line)}
+.block-head{display:grid;grid-template-columns:1fr 1.2fr;gap:20px 48px;align-items:end;margin-bottom:34px}
+.block-head h2{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.block-head h2 em{font-weight:500;color:var(--upb-red)}
+.block-head p{margin:0;color:var(--muted);max-width:60ch}
+@media (max-width:760px){.block-head{grid-template-columns:1fr}}
+.schools{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--fg);border-left:1px solid var(--line)}
+.school{padding:22px 22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0;background:var(--bg);transition:background .2s}
+.school:hover{background:var(--surface)}
+.school .gk{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--upb-gold)}
+.school h3{font-family:var(--f-display);font-weight:700;font-size:24px;margin:2px 0 4px;line-height:1.1}
+.school .who{font:400 12.5px/1.5 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.school dl{margin:14px 0 0;display:grid;gap:10px}
+.school dt{font:600 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--upb-red)}
+.school dd{margin:4px 0 0;font-size:15px;line-height:1.45}
+.school .kind{display:inline-block;margin-top:14px;font:600 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:2px;background:var(--surface-2)}
+@media (max-width:900px){.schools{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.schools{grid-template-columns:1fr}}
+
+/* ---------- Glosario ---------- */
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.term{appearance:none;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:18px 18px 16px;cursor:pointer;position:relative;min-height:128px;transition:border-color .2s,background .2s}
+.term:hover{border-color:var(--fg)}
+.term .w{font-family:var(--f-display);font-weight:700;font-size:23px;line-height:1.1;display:block}
+.term .g{font-family:var(--f-display);font-style:italic;color:var(--upb-gold);font-size:15px;display:block;margin-top:2px}
+.term .def{display:block;font-size:15px;color:var(--muted);margin-top:10px;line-height:1.45}
+.term .hint{position:absolute;right:14px;top:16px;font:600 11px/1 var(--f-mono);color:var(--muted)}
+.term[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.term[aria-pressed="true"] .def{color:#E9E4DC}
+.term[aria-pressed="true"] .g{color:var(--upb-gold-brand)}
+.term[aria-pressed="true"] .hint{color:var(--upb-gold-brand)}
+
+/* ---------- Dos líneas socráticas ---------- */
+.fork{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch}
+.root{grid-column:1/-1;justify-self:center;text-align:center;margin-bottom:-1px}
+.root .bust{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1;background:var(--ink);color:#fff;padding:14px 26px;border-radius:4px;display:inline-block;border-bottom:4px solid var(--upb-red-brand)}
+.stem{grid-column:1/-1;height:34px;position:relative}
+.stem::before{content:"";position:absolute;left:25%;right:25%;bottom:0;height:34px;border:2px solid var(--fg);border-bottom:0;border-radius:8px 8px 0 0}
+.branch{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:4px;padding:22px 24px;min-width:0}
+.branch h3{font-family:var(--f-display);font-weight:700;font-size:26px;margin:0 0 4px}
+.branch .who{font:400 12.5px/1.5 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.branch ul{margin:14px 0 0;padding-left:18px}
+.branch li{margin-bottom:6px;font-size:15.5px}
+.branch .res{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--f-display);font-style:italic;font-size:19px}
+.gap-col{width:clamp(14px,3vw,36px)}
+@media (max-width:700px){.fork{grid-template-columns:1fr}.gap-col{height:14px;width:auto}.stem::before{left:20%;right:20%}}
+
+/* ---------- Revisión del prejuicio ---------- */
+.versus{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--fg);border-radius:4px;overflow:hidden}
+.versus > div{padding:26px 26px 28px;min-width:0}
+.versus .old{background:var(--surface-2)}
+.versus .new{background:var(--ink);color:#fff}
+.versus h3{font:600 11.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+.versus .old h3{color:var(--muted)}
+.versus .new h3{color:var(--upb-gold-brand)}
+.versus blockquote{margin:0;font-family:var(--f-display);font-size:clamp(20px,2.4vw,26px);line-height:1.3}
+.versus .old blockquote{text-decoration:line-through;text-decoration-color:var(--upb-red);text-decoration-thickness:2px;color:var(--muted)}
+.versus p{margin:14px 0 0;font-size:15.5px;line-height:1.55}
+.versus .new p{color:#E3DED6}
+@media (max-width:700px){.versus{grid-template-columns:1fr}}
+
+/* ---------- Pie ---------- */
+footer{background:var(--ink);color:#E9E4DC;padding-block:44px 36px;margin-top:20px;border-top:4px solid var(--upb-red-brand)}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr;gap:28px 48px}
+footer h4{font:600 11.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--upb-gold-brand);margin:0 0 14px}
+footer ol{margin:0;padding-left:0;list-style:none;font-size:14.5px;line-height:1.55}
+footer li{padding-left:2em;text-indent:-2em;margin-bottom:10px}
+footer .credit{font-family:var(--f-display);font-size:24px;line-height:1.2;color:#fff;margin:0 0 6px}
+footer .credit em{color:var(--upb-gold-brand)}
+footer small{display:block;color:#A79F94;font-size:13px;line-height:1.5;margin-top:10px}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:4px;margin:24px 0}
+</style>
+
+<header class="inst">
+  <div class="wrap">
+    <div class="logo-plate" aria-label="Universidad Pontificia Bolivariana"><svg version="1.1" role="img" aria-label="Logosímbolo UPB" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 748.93 284.11" style="enable-background:new 0 0 748.93 284.11;" xml:space="preserve">
+<style type="text/css">
+	.upb0{fill:#FF0017;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.upb1{fill:#FFCA45;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.upb2{fill:#FFCA45;stroke:#000000;stroke-miterlimit:10;}
+	.upb3{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.upb4{fill:#FFCA45;}
+	.upb5{fill:#FED44A;}
+</style>
+<g>
+	<polygon class="upb0" points="53.82,123.48 32.35,123.48 8.24,73.27 6.77,73.27 6.77,208.01 8.56,208.01 32.24,162.64 53.82,162.75 
+			"/>
+	<polygon class="upb0" points="204.56,123.48 226.03,123.48 250.14,73.27 251.61,73.27 251.61,208.01 249.82,208.01 226.14,162.64 
+		204.56,162.75 	"/>
+	<polygon class="upb0" points="148.6,224.85 148.6,246.32 198.81,270.43 198.81,271.9 64.08,271.9 64.08,270.11 109.44,246.43 
+		109.34,224.85 	"/>
+	<polygon class="upb0" points="109.43,54.99 109.43,33.52 59.22,9.41 59.22,7.94 193.95,7.94 193.95,9.73 148.58,33.41 148.69,54.99 
+			"/>
+	<rect x="204.56" y="135.56" class="upb1" width="21.26" height="14.37"/>
+	
+		<rect x="118.79" y="228.3" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -106.0562 364.9088)" class="upb1" width="21.26" height="14.37"/>
+	
+		<rect x="118.79" y="37.18" transform="matrix(6.123234e-17 -1 1 6.123234e-17 85.0669 173.7857)" class="upb1" width="21.26" height="14.37"/>
+	<rect x="32.56" y="135.56" class="upb1" width="21.26" height="14.37"/>
+	<path class="upb1" d="M129.44,231.82c-0.11-3.95-3.34-7.11-7.3-7.13H85.39c-14.22-1.51-26.09-10.86-31.21-23.65l-0.37-2.08
+		c0-8.53,0-143.97,0-143.97h150.74v144.39v1.66c-5.12,12.79-16.99,22.14-31.21,23.65l-36.79,0c-3.95,0.12-7.12,3.36-7.12,7.34
+		c0,0.15,0,0.29,0.01,0.44"/>
+	<path d="M129.63,214.22c-0.01-0.1-0.01-0.2-0.01-0.29c0-2.68,2.37-4.86,5.33-4.94c0,0,21.93,0,26.66,0l15.05,0h0.75
+		c4.36-0.11,7.92-3.47,8.46-7.79v-1.29v-12.53c0-6.74,0-115.37,0-115.37H72.98c0,0,0,102.4,0,114.53v13.37l0.07,1.28
+		c0.53,4.32,4.1,7.68,8.46,7.79l0.63,0h15.05c3.92,0,26.96,0,26.96,0c2.97,0.01,5.39,2.14,5.47,4.8"/>
+	<path class="upb2" d="M126.16,128.63c0.28,1.73,1.1,3.98,0.7,5.14c-0.54,1.55-1.98,2.56-3.22,3.63c-2.25,1.94-4.09,4.49-4.64,7.41
+		c-0.55,2.92,0.4,6.22,2.79,7.98c0.98,0.72,2.14,1.16,3.31,1.5c3.24,0.96,6.76,1.27,10.01,0.32c3.25-0.95,6.18-3.29,7.34-6.46
+		c1.24-3.37,0.35-7.24-1.55-10.29s-4.72-5.4-7.58-7.57c-0.67-0.51-2.43-2.17-4.06-3.18c-1.14-0.71-2.43-1.24-3.75-1.45
+		C125.93,126.4,126.02,127.78,126.16,128.63z"/>
+	<path class="upb3" d="M127.57,138.23c-3.15,1.38-5.05,4.92-4.95,8.36c0.04,1.42,0.41,2.88,1.35,3.94c1.23,1.4,3.21,1.88,5.08,1.98
+		c2.4,0.13,4.87-0.27,6.94-1.49s3.69-3.31,3.98-5.7c0.28-2.24-0.6-4.47-1.74-6.42c-2.26-3.86-5.65-7.06-9.63-9.1"/>
+	<path class="upb3" d="M128.55,138.67c-1.59,1.17-2.46,3.11-2.77,5.06c-0.25,1.55-0.18,3.19,0.48,4.62c0.66,1.43,1.97,2.6,3.52,2.84"
+		/>
+	<path class="upb3" d="M129.45,133.13c2.27,2.28,4.2,4.91,5.7,7.76c0.92,1.74,1.69,3.65,1.57,5.61c-0.12,1.96-1.36,3.97-3.27,4.43"/>
+	<path class="upb3" d="M129.85,139.44c-0.51,0.79-0.79,1.71-1.05,2.62c-0.37,1.31-0.69,2.72-0.27,4.01c0.28,0.85,0.87,1.56,1.48,2.21
+		c0.29,0.3,0.58,0.6,0.89,0.88"/>
+	<path class="upb3" d="M131.38,138.8c0.55,0.65,0.87,1.46,1.15,2.26c0.41,1.15,0.78,2.33,0.84,3.55c0.07,1.56-0.39,3.15-1.29,4.43"/>
+	<g>
+		<path class="upb4" d="M102.27,114.39v-1.19c3.06-0.34,3.43-0.76,2.77-2.38c-0.61-1.66-1.55-3.78-2.54-6.45H92.36
+			c-0.75,1.91-1.46,3.57-2.12,5.31c-1.03,2.76-0.38,3.1,3.48,3.52v1.19H82.86v-1.19c2.96-0.34,3.71-0.64,5.36-4.46l9.73-22.29
+			l1.5-0.25c2.96,7.26,6.2,15.29,9.16,22.63c1.5,3.69,1.93,4.03,5.26,4.37v1.19H102.27z M97.57,91.75c-1.5,3.65-3.1,7.52-4.51,10.87
+			h8.79L97.57,91.75z"/>
+	</g>
+	<g>
+		<path class="upb4" d="M110.45,166.86c-2.73,0.17-3.73,0.83-3.82,2.75c-0.04,0.96-0.13,2.71-0.13,6.54v4.5
+			c0,4.25-0.52,7.5-3.04,10.04c-2.04,2.04-4.99,2.67-7.98,2.67c-2.52,0-5.21-0.5-7.11-1.92c-2.6-1.92-3.86-4.79-3.86-9.66v-10.62
+			c0-3.75-0.35-4-3.82-4.29v-1.17H92.1v1.17c-3.47,0.21-3.82,0.54-3.82,4.29v10.41c0,6.08,2.99,9.41,8.2,9.41
+			c6.16,0,8.11-3.66,8.11-10.58v-4.25c0-3.83-0.13-5.41-0.22-6.54c-0.13-1.87-1.13-2.58-4.34-2.75v-1.17h10.41V166.86z"/>
+	</g>
+	<g>
+		<path class="upb4" d="M132.39,165.56c3.08,0,5.55,0.56,7.33,1.85c1.69,1.25,2.86,3.26,2.86,6.1c0,6.27-5.42,8.8-9.54,8.8
+			c-0.48,0-0.91-0.04-1.17-0.09l-2.99-0.77v6.7c0,3.61,0.3,3.69,4.29,4.12v1.2h-11.97v-1.2c3.73-0.39,3.9-0.64,3.9-4.21v-17.04
+			c0-3.82-0.48-3.91-3.9-4.25v-1.2H132.39z M128.87,179.94c0.52,0.26,1.69,0.56,3.17,0.56c2.91,0,6.51-1.46,6.51-6.87
+			c0-4.72-3.12-6.61-6.77-6.61c-1.26,0-2.17,0.21-2.43,0.51c-0.35,0.3-0.48,0.82-0.48,1.97V179.94z"/>
+	</g>
+	<g>
+		<path class="upb4" d="M167.82,178.46c4.16,0.69,7.55,2.66,7.55,6.83c0,2.92-1.65,5.24-4.21,6.61c-2.26,1.24-4.47,1.67-7.5,1.67
+			h-10.67v-1.2c3.69-0.34,3.9-0.73,3.9-4.12v-17.21c0-3.56-0.39-3.86-3.9-4.16v-1.2h11.37c3.25,0,5.29,0.56,6.68,1.5
+			c1.52,1.03,2.56,2.62,2.56,4.81C173.59,176.01,170.25,177.86,167.82,178.46z M162.83,177.94c4.77,0,6.72-1.89,6.72-5.41
+			c0-3-1.87-5.32-6.03-5.32c-1.21,0-2,0.13-2.43,0.43c-0.35,0.26-0.48,0.73-0.48,2.1v8.2H162.83z M160.62,188.16
+			c0,3.09,0.74,3.86,3.82,3.86c3.38,0,6.68-1.8,6.68-6.31c0-4.38-3.12-6.27-8.42-6.27h-2.08V188.16z"/>
+	</g>
+	<path class="upb5" d="M159.71,113.54v-2.67c2.59-0.36,4.54-1.58,5.86-3.66c1.32-2.09,1.98-4.83,1.98-8.23c0-2.94-0.37-5.22-1.1-6.84
+		c-0.73-1.62-1.8-2.85-3.2-3.7c-1.41-0.85-3.13-1.27-5.17-1.27c-1.53,0-2.97,0.26-4.32,0.79c-1.35,0.53-2.49,1.37-3.39,2.54
+		c-0.9,1.17-1.51,2.45-1.82,3.85c-0.31,1.4-0.46,2.91-0.46,4.52c0,3.53,0.67,6.33,2,8.4c1.33,2.07,3.28,3.27,5.84,3.62v2.67
+		c-1.32,0.04-3.17,0.07-5.56,0.1s-4.45,0.09-6.19,0.16c-0.11-1.49-0.33-3.46-0.67-5.92l0.15-0.13h0.54l0.15,0.13
+		c0.25,0.99,0.44,1.63,0.58,1.92c0.14,0.29,0.36,0.5,0.67,0.63c0.3,0.13,0.81,0.19,1.52,0.19h4.88v-0.29
+		c-2.53-1.08-4.47-2.69-5.83-4.85c-1.36-2.15-2.04-4.63-2.04-7.45c0-2.54,0.53-4.69,1.59-6.45c1.06-1.76,2.63-3.12,4.73-4.07
+		s4.65-1.43,7.65-1.43c4.34,0,7.66,1.07,9.98,3.2c2.32,2.13,3.47,5.05,3.47,8.76c0,1.23-0.13,2.42-0.4,3.57
+		c-0.27,1.15-0.72,2.29-1.36,3.42c-0.64,1.13-1.47,2.15-2.48,3.04c-1.01,0.9-2.22,1.66-3.64,2.26v0.29h4.9
+		c1.08,0,1.74-0.16,1.98-0.49c0.23-0.33,0.49-1.08,0.77-2.25l0.15-0.13h0.54l0.15,0.13c-0.33,2.45-0.55,4.42-0.67,5.92
+		c-1.75-0.08-3.8-0.13-6.15-0.15L159.71,113.54z"/>
+</g>
+<g>
+	<path d="M275.69,73.09h19.03v46.26c0,4.45,0.92,7.8,2.75,10.04c1.83,2.24,4.56,3.36,8.19,3.36c3.79,0,6.77-1.24,8.95-3.72
+		c2.18-2.48,3.27-5.9,3.27-10.25V78.63h-5.54v-5.54h19.03v60.51h5.49v5.54h-18.51l-0.38-6.68c-2.56,2.68-5.3,4.7-8.24,6.04
+		s-6.11,2.01-9.52,2.01c-6.22,0-10.94-1.74-14.16-5.23c-3.22-3.49-4.83-8.61-4.83-15.36V78.63h-5.54V73.09z"/>
+</g>
+<g>
+	<path d="M340.58,133.61h24.57c9.22,0,16.4,2.12,21.54,6.37c5.14,4.25,7.72,10.14,7.72,17.68c0,6.98-2.35,12.75-7.05,17.31
+		c-4.7,4.56-10.59,6.84-17.66,6.84c-1.93,0-3.73-0.14-5.4-0.43c-1.67-0.28-3.24-0.73-4.69-1.33v14.06h6.49v5.54h-25.52v-5.54h5.54
+		v-54.97h-5.54V133.61z M359.61,139.62v27.18c0,3.47,0.58,5.93,1.75,7.39c1.17,1.45,3.11,2.18,5.82,2.18c3.95,0,7.09-1.56,9.45-4.69
+		c2.35-3.12,3.53-7.34,3.53-12.64c0-6.12-1.54-10.89-4.62-14.3c-3.08-3.41-7.39-5.11-12.95-5.11H359.61z"/>
+</g>
+<g>
+	<path d="M318.81,230.92c6,0.63,10.68,2.64,14.06,6.04c3.38,3.39,5.07,7.81,5.07,13.23c0,6.38-2.17,11.53-6.51,15.46
+		c-4.34,3.93-10.03,5.9-17.07,5.9h-29.21v-5.54h5.54v-54.97h-5.54v-5.54h25.71c6.63,0,11.6,1.14,14.92,3.41
+		c3.31,2.27,4.97,5.67,4.97,10.18c0,2.9-1.06,5.41-3.17,7.53C325.46,228.73,322.54,230.16,318.81,230.92z M303.71,228.6h4.26
+		c3.35,0,5.91-0.73,7.69-2.2c1.78-1.47,2.68-3.57,2.68-6.32c0-2.78-0.95-4.88-2.84-6.32c-1.89-1.44-4.67-2.15-8.33-2.15h-3.46V228.6
+		z M303.71,234.71v30.82h4.73c5.37,0,9.39-1.28,12.07-3.84c2.68-2.56,4.02-6.39,4.02-11.51c0-4.96-1.33-8.77-3.98-11.46
+		c-2.65-2.68-6.44-4.02-11.36-4.02H303.71z"/>
+</g>
+<g>
+	<path d="M343.56,118.9V83.77l-4.31,1.18v-4.55l15.62-4.59h0.57l-0.09,7.77c3.31-2.71,6.38-4.73,9.21-6.06
+		c2.82-1.33,5.45-1.99,7.88-1.99c4.1,0,7.37,1.27,9.8,3.81c2.43,2.54,3.65,5.99,3.65,10.35v29.21h4.31v4.64h-20.5v-4.64h4.4V91.15
+		c0-2.37-0.6-4.17-1.8-5.42c-1.2-1.25-2.94-1.87-5.21-1.87c-1.86,0-3.83,0.47-5.9,1.42c-2.07,0.95-4.02,2.26-5.85,3.93v29.69h4.4
+		v4.64h-20.5v-4.64H343.56z"/>
+</g>
+<g>
+	<path d="M410.01,75.53h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31V83.77
+		l-4.31,1.18v-4.55L410.01,75.53z M397.04,65.82c0-1.8,0.66-3.36,1.99-4.69s2.92-1.99,4.78-1.99c1.89,0,3.49,0.65,4.78,1.94
+		c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01c-1.8,0-3.38-0.69-4.73-2.06
+		C397.72,69.21,397.04,67.62,397.04,65.82z"/>
+</g>
+<g>
+	<path d="M541.89,150.71h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L541.89,150.71z M528.92,141c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S528.92,142.8,528.92,141z"/>
+</g>
+<g>
+	<path d="M431.24,223.94h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L431.24,223.94z M418.27,214.24c0-1.8,0.66-3.36,1.99-4.69s2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.73-2.06C418.95,217.62,418.27,216.04,418.27,214.24z"/>
+</g>
+<g>
+	<path d="M592.52,150.71h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L592.52,150.71z M579.55,141c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S579.55,142.8,579.55,141z"/>
+</g>
+<g>
+	<path d="M583.44,223.54h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L583.44,223.54z M570.46,213.83c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S570.46,215.63,570.46,213.83z"/>
+</g>
+<g>
+	<path d="M658.36,150.71h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L658.36,150.71z M645.38,141c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S645.38,142.8,645.38,141z"/>
+</g>
+<g>
+	<path d="M641.02,159.37l-8.48,7.81c-1.51-3.66-3.25-6.38-5.21-8.17c-1.96-1.78-4.2-2.67-6.72-2.67c-3.19,0-5.84,1.36-7.95,4.07
+		c-2.12,2.72-3.17,6.2-3.17,10.46c0,5.56,1.61,10.39,4.83,14.49c3.22,4.1,6.94,6.16,11.17,6.16c2.3,0,4.49-0.54,6.56-1.63
+		s3.99-2.71,5.75-4.85l2.7,2.32c-2.15,3.98-5,7.1-8.55,9.35c-3.55,2.26-7.39,3.39-11.53,3.39c-6.5,0-11.76-2.11-15.77-6.32
+		c-4.01-4.21-6.01-9.71-6.01-16.5c0-7.29,2.42-13.54,7.27-18.75s10.6-7.81,17.26-7.81c3.5,0,6.74,0.72,9.71,2.15
+		C635.85,154.3,638.56,156.47,641.02,159.37z"/>
+</g>
+<g>
+	<path d="M550.23,198.72v-4.64h4.31v-34.61h-6.34l2.22-6.01h4.78c-0.95-1.26-1.66-2.5-2.13-3.72c-0.47-1.21-0.71-2.44-0.71-3.67
+		c0-3.63,1.78-6.99,5.35-10.09c3.57-3.09,7.42-4.64,11.55-4.64c2.11,0,4.09,0.4,5.92,1.18c1.83,0.79,3.38,1.91,4.64,3.36l-7.48,6.2
+		c-1.42-1.89-2.6-3.19-3.53-3.88c-0.93-0.69-1.89-1.04-2.86-1.04c-1.45,0-2.64,0.53-3.55,1.59c-0.92,1.06-1.37,2.42-1.37,4.1
+		c0,2.94,1.09,5.44,3.27,7.5c2.18,2.07,4.86,3.1,8.05,3.1h4.5l-2.27,6.01h-8.24v34.61h6.53v4.64H550.23z"/>
+</g>
+<g>
+	<path d="M428.16,75.58c0.28,1.52,0.69,3.08,1.23,4.69s1.18,3.27,1.94,4.97c2.75-3.6,5.08-6.07,7.01-7.41
+		c1.93-1.34,3.99-2.01,6.2-2.01c1.48,0,3.57,0.32,6.25,0.97c2.68,0.65,4.61,0.97,5.78,0.97c0.82,0,1.59-0.12,2.32-0.36
+		c0.73-0.24,1.56-0.65,2.51-1.25l2.04,2.04c-0.79,1.29-1.8,3.36-3.03,6.2c-0.22,0.6-0.39,1.04-0.52,1.33l-12.74,30.35
+		c-0.51,1.29-0.95,2.55-1.33,3.76c-0.38,1.22-0.71,2.45-0.99,3.72h-9.52c-0.38-1.52-1.12-3.52-2.22-6.01
+		c-0.13-0.32-0.22-0.54-0.28-0.66l-13.97-31.72l-3.88,1.66l-1.61-3.69L428.16,75.58z M454.54,85.24c-0.51,0.38-1.03,0.66-1.56,0.83
+		c-0.54,0.17-1.21,0.26-2.04,0.26c-0.98,0-2.67-0.35-5.07-1.06c-2.4-0.71-4.14-1.07-5.21-1.07c-1.39,0-2.74,0.39-4.05,1.16
+		c-1.31,0.77-2.58,1.93-3.81,3.48l10.18,24.05L454.54,85.24z"/>
+</g>
+<g>
+	<path d="M448.32,224.02c0.28,1.52,0.69,3.08,1.23,4.69c0.54,1.61,1.18,3.27,1.94,4.97c2.75-3.6,5.08-6.07,7.01-7.41
+		c1.93-1.34,3.99-2.01,6.2-2.01c1.48,0,3.57,0.32,6.25,0.97c2.68,0.65,4.61,0.97,5.78,0.97c0.82,0,1.59-0.12,2.32-0.36
+		c0.73-0.24,1.56-0.65,2.51-1.25l2.04,2.04c-0.79,1.29-1.8,3.36-3.03,6.2c-0.22,0.6-0.4,1.04-0.52,1.33l-12.74,30.35
+		c-0.51,1.29-0.95,2.55-1.33,3.76c-0.38,1.22-0.71,2.45-0.99,3.72h-9.52c-0.38-1.52-1.12-3.52-2.22-6.01
+		c-0.13-0.32-0.22-0.54-0.28-0.66l-13.97-31.72l-3.88,1.66l-1.61-3.69L448.32,224.02z M474.69,233.68c-0.5,0.38-1.03,0.66-1.56,0.83
+		c-0.54,0.17-1.21,0.26-2.04,0.26c-0.98,0-2.67-0.35-5.07-1.06c-2.4-0.71-4.14-1.07-5.21-1.07c-1.39,0-2.74,0.39-4.05,1.16
+		c-1.31,0.77-2.58,1.93-3.81,3.48l10.18,24.05L474.69,233.68z"/>
+</g>
+<g>
+	<path d="M498.19,96.08l-24.34,7.86c1.26,3.91,3.16,6.9,5.68,8.95c2.53,2.05,5.57,3.08,9.14,3.08c2.46,0,4.79-0.46,6.98-1.37
+		s4.27-2.29,6.23-4.12l2.89,2.98c-2.87,3.69-6.23,6.53-10.06,8.5c-3.84,1.97-7.92,2.96-12.24,2.96c-6.34,0-11.55-2.29-15.6-6.87
+		c-4.06-4.58-6.08-10.4-6.08-17.47c0-7.07,2.24-13,6.72-17.78c4.48-4.78,9.93-7.17,16.33-7.17c3,0,5.8,0.63,8.4,1.89
+		c2.6,1.26,4.95,3.12,7.03,5.59c1.45,1.77,2.7,3.78,3.74,6.04c1.04,2.26,1.56,3.76,1.56,4.52c0,0.47-0.96,0.96-2.89,1.47
+		C500.31,95.48,499.14,95.79,498.19,96.08z M492.56,92.43c-1.17-3.6-2.75-6.38-4.74-8.33c-1.99-1.96-4.21-2.94-6.68-2.94
+		c-2.68,0-4.91,1.18-6.68,3.55c-1.77,2.37-2.65,5.32-2.65,8.85c0,0.88,0.04,1.76,0.12,2.63s0.2,1.73,0.36,2.58L492.56,92.43z"/>
+</g>
+<g>
+	<path d="M537.96,75.25l3.79,1.66l-5.73,12.59c-1.67-1.1-3.07-1.86-4.19-2.27c-1.12-0.41-2.25-0.62-3.39-0.62
+		c-1.83,0-3.31,0.7-4.43,2.11c-1.12,1.41-1.68,3.35-1.68,5.85v24.34h5.54v4.64h-21.64v-4.64h4.31V90.78
+		c-0.03-1.42-0.17-2.34-0.4-2.77c-0.24-0.43-0.69-0.83-1.35-1.21l-2.04,2.13l-3.22-2.94l8.24-10.46c2.53,1.33,4.47,2.66,5.85,4
+		c1.37,1.34,2.38,2.9,3.01,4.66c1.7-3.19,3.25-5.43,4.64-6.72c1.39-1.29,2.87-1.94,4.45-1.94c0.88,0,1.9,0.19,3.05,0.57
+		s2.36,0.93,3.62,1.66L537.96,75.25z"/>
+</g>
+<g>
+	<path d="M561.85,223.69l3.79,1.66l-5.73,12.59c-1.67-1.1-3.07-1.86-4.19-2.27c-1.12-0.41-2.25-0.62-3.39-0.62
+		c-1.83,0-3.31,0.7-4.43,2.11c-1.12,1.41-1.68,3.35-1.68,5.85v24.34h5.54v4.64h-21.64v-4.64h4.31v-28.12
+		c-0.03-1.42-0.17-2.34-0.4-2.77c-0.24-0.43-0.69-0.83-1.35-1.21l-2.04,2.13l-3.22-2.94l8.24-10.46c2.53,1.33,4.47,2.66,5.85,4
+		c1.37,1.34,2.38,2.9,3.01,4.66c1.7-3.19,3.25-5.43,4.64-6.72c1.39-1.29,2.87-1.94,4.45-1.94c0.88,0,1.9,0.19,3.05,0.57
+		s2.36,0.93,3.62,1.66L561.85,223.69z"/>
+</g>
+<g>
+	<path d="M571.21,80.31l-5.16,7.72c-2.56-2.43-4.83-4.2-6.82-5.3s-3.91-1.66-5.78-1.66c-1.39,0-2.55,0.42-3.48,1.25
+		c-0.93,0.84-1.4,1.87-1.4,3.1c0,2.49,3.82,5.44,11.46,8.85c0.16,0.06,0.3,0.13,0.43,0.19c4.83,2.15,8.05,4.24,9.66,6.27
+		c1.61,2.04,2.41,4.7,2.41,7.98c0,4.51-1.82,8.34-5.44,11.48c-3.63,3.14-8.11,4.71-13.45,4.71c-3.28,0-6.45-0.61-9.49-1.82
+		c-3.05-1.21-5.74-2.94-8.07-5.18l6.39-8.81c3.09,3.35,5.88,5.78,8.36,7.32c2.48,1.53,4.87,2.3,7.17,2.3c1.74,0,3.17-0.53,4.31-1.59
+		c1.14-1.06,1.7-2.41,1.7-4.05c0-2.46-2.95-5.1-8.85-7.91c-0.35-0.16-0.58-0.27-0.71-0.33c-6.22-3-10.16-5.53-11.81-7.6
+		c-1.66-2.07-2.49-4.65-2.49-7.74c0-4.01,1.53-7.34,4.59-9.99c3.06-2.65,6.96-3.98,11.69-3.98c2.56,0,5.04,0.4,7.46,1.18
+		C566.31,77.5,568.75,78.7,571.21,80.31z"/>
+</g>
+<g>
+	<path d="M590.63,75.53h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31V83.77
+		l-4.31,1.18v-4.55L590.63,75.53z M577.66,65.82c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S577.66,67.62,577.66,65.82z"/>
+</g>
+<g>
+	<path d="M644.78,56.64v4.83l-4.17,1.47v55.97h4.36v4.64h-15.25l-0.95-5.45c-2.27,2.24-4.64,3.94-7.1,5.09s-4.91,1.73-7.34,1.73
+		c-5.49,0-9.97-2.11-13.42-6.34c-3.46-4.23-5.18-9.75-5.18-16.57c0-7.54,2.14-13.84,6.42-18.89c4.28-5.05,9.43-7.58,15.46-7.58
+		c2.05,0,3.99,0.29,5.82,0.88c1.83,0.58,3.61,1.46,5.35,2.63V66.82l-4.36,1.47v-4.88L644.78,56.64z M628.78,91.44
+		c0-3.35-0.87-5.96-2.6-7.84c-1.74-1.88-4.14-2.82-7.2-2.82c-3.28,0-6.01,1.59-8.19,4.76c-2.18,3.17-3.27,7.27-3.27,12.29
+		c0,5.59,1.2,10.17,3.6,13.75c2.4,3.58,5.41,5.37,9.04,5.37c1.55,0,3.08-0.39,4.62-1.16c1.53-0.77,2.86-1.84,4-3.2V91.44z"/>
+</g>
+<g>
+	<path d="M656.83,74.49l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L656.83,74.49z
+		 M676.24,97.78c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V97.78z"/>
+</g>
+<g>
+	<path d="M674.28,149.66l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L674.28,149.66z
+		 M693.69,172.96c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V172.96z"/>
+</g>
+<g>
+	<path d="M491.37,222.49l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L491.37,222.49z
+		 M510.78,245.79c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V245.79z"/>
+</g>
+<g>
+	<path d="M596.7,222.93l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L596.7,222.93z
+		 M616.12,246.22c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V246.22z"/>
+</g>
+<g>
+	<path d="M697.61,222.93l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L697.61,222.93z
+		 M717.02,246.22c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V246.22z"/>
+</g>
+<g>
+	<path d="M418.28,199.12c-7.32,0-13.4-2.33-18.23-6.98c-4.83-4.66-7.24-10.55-7.24-17.68s2.41-13.04,7.24-17.71
+		c4.83-4.67,10.91-7.01,18.23-7.01c7.35,0,13.45,2.34,18.28,7.01c4.83,4.67,7.24,10.57,7.24,17.71c0,7.17-2.41,13.07-7.24,17.71
+		C431.73,196.8,425.64,199.12,418.28,199.12z M405.21,170.81c0,6.38,1.48,11.81,4.43,16.31c2.95,4.5,6.45,6.75,10.49,6.75
+		c3.47,0,6.22-1.4,8.24-4.19c2.02-2.79,3.03-6.64,3.03-11.53c0-6.44-1.49-11.91-4.47-16.41c-2.98-4.5-6.54-6.75-10.68-6.75
+		c-3.35,0-6.02,1.42-8.03,4.26C406.22,162.09,405.21,165.95,405.21,170.81z"/>
+</g>
+<g>
+	<path d="M364.44,272.92c-7.32,0-13.4-2.33-18.23-6.98c-4.83-4.66-7.24-10.55-7.24-17.68s2.41-13.04,7.24-17.71
+		c4.83-4.67,10.91-7.01,18.23-7.01c7.35,0,13.45,2.34,18.28,7.01c4.83,4.67,7.24,10.57,7.24,17.71c0,7.17-2.41,13.07-7.24,17.71
+		C377.89,270.6,371.79,272.92,364.44,272.92z M351.37,244.61c0,6.38,1.48,11.81,4.43,16.31c2.95,4.5,6.45,6.75,10.49,6.75
+		c3.47,0,6.22-1.4,8.24-4.19c2.02-2.79,3.03-6.64,3.03-11.53c0-6.44-1.49-11.91-4.47-16.41s-6.54-6.75-10.68-6.75
+		c-3.35,0-6.02,1.42-8.03,4.26C352.37,235.89,351.37,239.75,351.37,244.61z"/>
+</g>
+<g>
+	<path d="M412.05,205.05v4.83l-4.17,1.47v55.97h4.26v4.64h-20.45v-4.64h4.36v-52.08l-4.36,1.47v-4.88L412.05,205.05z"/>
+</g>
+<g>
+	<path d="M449.41,194.08v-35.13l-4.31,1.18v-4.55l15.63-4.59h0.57l-0.09,7.77c3.31-2.71,6.38-4.73,9.21-6.06
+		c2.82-1.33,5.45-1.99,7.88-1.99c4.1,0,7.37,1.27,9.8,3.81c2.43,2.54,3.65,5.99,3.65,10.35v29.21h4.31v4.64h-20.5v-4.64h4.4v-27.75
+		c0-2.37-0.6-4.17-1.8-5.42c-1.2-1.25-2.94-1.87-5.21-1.87c-1.86,0-3.83,0.47-5.9,1.42s-4.02,2.26-5.85,3.93v29.69h4.4v4.64h-20.5
+		v-4.64H449.41z"/>
+</g>
+<g>
+	<path d="M639.42,267.34v-35.13l-4.31,1.18v-4.55l15.63-4.59h0.57l-0.09,7.77c3.31-2.71,6.38-4.73,9.21-6.06
+		c2.82-1.33,5.45-1.99,7.88-1.99c4.1,0,7.37,1.27,9.8,3.81c2.43,2.54,3.65,5.99,3.65,10.35v29.21h4.31v4.64h-20.5v-4.64h4.4v-27.75
+		c0-2.37-0.6-4.17-1.8-5.42c-1.2-1.25-2.94-1.87-5.21-1.87c-1.86,0-3.83,0.47-5.9,1.42s-4.02,2.26-5.85,3.93v29.69h4.4v4.64h-20.5
+		v-4.64H639.42z"/>
+</g>
+<g>
+	<path d="M511.24,141.33l3.27,0.76v10.46h9.23l-0.62,3.88c-0.13,0.82-0.33,1.37-0.62,1.63c-0.28,0.27-0.88,0.4-1.8,0.4h-6.2v27.75
+		c0,2.4,0.35,4.13,1.06,5.18c0.71,1.06,1.84,1.59,3.39,1.59c0.69,0,1.4-0.13,2.11-0.38c0.71-0.25,1.57-0.71,2.58-1.37l2.04,3.03
+		c-2.02,1.93-4.14,3.38-6.37,4.36s-4.51,1.47-6.84,1.47c-3.47,0-5.99-0.92-7.55-2.75c-1.56-1.83-2.34-4.8-2.34-8.9v-29.97h-4.92
+		v-3.79c3.41-1.42,6.24-3.24,8.5-5.47C508.41,146.99,510.1,144.36,511.24,141.33z"/>
+</g>
+<g>
+	<path d="M743.13,56.64v4.83l-4.17,1.47v55.97h4.36v4.64h-15.25l-0.95-5.45c-2.27,2.24-4.64,3.94-7.1,5.09s-4.91,1.73-7.34,1.73
+		c-5.49,0-9.97-2.11-13.42-6.34c-3.46-4.23-5.18-9.75-5.18-16.57c0-7.54,2.14-13.84,6.42-18.89c4.28-5.05,9.43-7.58,15.46-7.58
+		c2.05,0,3.99,0.29,5.82,0.88c1.83,0.58,3.61,1.46,5.35,2.63V66.82l-4.36,1.47v-4.88L743.13,56.64z M727.13,91.44
+		c0-3.35-0.87-5.96-2.6-7.84c-1.74-1.88-4.14-2.82-7.2-2.82c-3.28,0-6.01,1.59-8.19,4.76c-2.18,3.17-3.27,7.27-3.27,12.29
+		c0,5.59,1.2,10.17,3.6,13.75c2.4,3.58,5.41,5.37,9.04,5.37c1.55,0,3.08-0.39,4.62-1.16c1.53-0.77,2.86-1.84,4-3.2V91.44z"/>
+</g>
+</svg></div>
+    <div class="inst-meta">
+      <div><b>Maestría en Filosofía</b></div>
+      <div>Diálogos con la tradición filosófica</div>
+      <div>Actividad 1 · Línea de tiempo</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">323 a.C. — 30 a.C. · y su prolongación romana</p>
+    <h1>Del <em>ágora</em> al cosmos<span class="amp">.</span></h1>
+    <p class="sub">Contexto histórico de la filosofía en el mundo helenístico: de la crisis de la pólis al sabio cosmopolita.</p>
+    <div class="byline">
+      <span>Elaborado por <strong>Niver O. Vargas</strong></span>
+      <span>Fuentes: García &amp; Ímaz (2007) · Hadot (1998) · Carmona Aránzazu</span>
+    </div>
+    <div class="meander" id="meander" aria-hidden="true"></div>
+    <div class="lede">
+      <div>
+        <p>La muerte de Alejandro Magno en Babilonia abrió casi tres siglos en los que lo griego dejó de ser un rasgo de nacimiento y se volvió un modo de vida que se aprende. La lengua común, la <i>koiné</i>, llevó el arte, la ciencia y la filosofía griegas desde Egipto hasta el Indo, mientras la ciudad-estado perdía su autonomía frente a las nuevas monarquías.</p>
+        <p>En ese escenario, las escuelas filosóficas reorientan su tarea: más que construir teorías, proponen <b>formas de vivir</b> que aseguren al individuo la serenidad y la autosuficiencia que la pólis ya no garantiza. Esta línea de tiempo recorre ese contexto en cinco tramos, desde los antecedentes del siglo IV hasta los autores romanos que nos transmitieron la tradición.</p>
+      </div>
+      <div class="facts" aria-label="Datos clave">
+        <div class="fact"><div class="n">323<small>a.C.</small></div><div class="l">Muere Alejandro: inicio convencional del periodo</div></div>
+        <div class="fact"><div class="n">30<small>a.C.</small></div><div class="l">Egipto, último reino helenístico, pasa a Roma</div></div>
+        <div class="fact"><div class="n">4</div><div class="l">Escuelas estables en Atenas: Academia, Liceo, Jardín, Stoa</div></div>
+        <div class="fact"><div class="n">≈700</div><div class="l">Tratados de Crisipo; ninguno se conserva completo</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ruler-shell">
+  <div class="wrap">
+    <div class="controls" role="group" aria-label="Filtrar por dimensión">
+      <span class="lbl">Dimensión</span>
+      <button class="chip" id="f-pol" data-cat="pol" aria-pressed="true" style="--c:var(--c-pol)"><span class="dot"></span>Política</button>
+      <button class="chip" id="f-cul" data-cat="cul" aria-pressed="true" style="--c:var(--c-cul)"><span class="dot"></span>Cultura y ciencia</button>
+      <button class="chip" id="f-fil" data-cat="fil" aria-pressed="true" style="--c:var(--c-fil)"><span class="dot"></span>Filosofía</button>
+      <button class="chip ghost" id="f-expand" aria-pressed="false">Expandir todo</button>
+    </div>
+    <div class="ruler" aria-label="Escala temporal proporcional, 420 a 20 a.C.">
+      <div class="ruler-track" id="ruler"></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="timeline"></main>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Seis escuelas, <em>seis elecciones de vida</em></h2>
+      <p>Para Hadot, cada escuela antigua se define ante todo por una opción existencial. Todas buscan la tranquilidad del alma y comparten con Sócrates la idea de que el mal reside en nuestros juicios, pero cada una diagnostica de modo distinto el origen de la desgracia humana.</p>
+    </div>
+    <div class="schools" id="schools"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Lo que el <em>individuo</em> busca</h2>
+      <p>Conceptos que articulan el ideal del sabio helenístico. Pulse cada tarjeta para fijarla y comparar.</p>
+    </div>
+    <div class="gloss" id="gloss"></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Una raíz, <em>dos líneas</em></h2>
+      <p>La lectura propuesta en el material del curso: de Sócrates parten una línea teórica y una línea práctica; las escuelas helenísticas desarrollan la segunda.</p>
+    </div>
+    <div class="fork">
+      <div class="root"><span class="bust">Sócrates</span></div>
+      <div class="stem" aria-hidden="true"></div>
+      <div class="branch" style="--c:var(--upb-gold)">
+        <h3>Línea teórica</h3>
+        <div class="who">Platón · Aristóteles</div>
+        <ul>
+          <li>Discurso orientado a la construcción de la verdad argumentada.</li>
+          <li>Diálogos y tratados filosóficos.</li>
+          <li>Ocio contemplativo reservado a una élite con tiempo para investigar.</li>
+        </ul>
+        <div class="res">Resultado: teorías desde definiciones y conceptos.</div>
+      </div>
+      <div class="gap-col" aria-hidden="true"></div>
+      <div class="branch" style="--c:var(--upb-red)">
+        <h3>Línea práctica</h3>
+        <div class="who">Cínicos · Epicúreos · Estoicos · Escépticos</div>
+        <ul>
+          <li>Discurso orientado a la construcción de modos de vida.</li>
+          <li>Tecnologías del yo (Foucault) y ejercicios espirituales (Hadot).</li>
+          <li>Diatribas, cartas, diarios, meditaciones; doctrina abierta a ricos y pobres, libres y esclavos.</li>
+        </ul>
+        <div class="res">Resultado: filosofía como arte de vida.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Revisar un <em>prejuicio</em></h2>
+      <p>Las tres fuentes coinciden en desmontar la imagen del helenismo como simple decadencia.</p>
+    </div>
+    <div class="versus">
+      <div class="old">
+        <h3>La lectura heredada</h3>
+        <blockquote>Una Grecia degenerada por el contacto con Oriente, cuyos filósofos, sin libertad política, se refugian en la vida interior.</blockquote>
+        <p>Hegel aún la llamaba «la decadencia de Grecia», un tránsito hacia Roma. Según Hadot, esta imagen se consolida a comienzos del siglo XX y descansa en un prejuicio clasicista que solo valora a presocráticos, trágicos y Platón.</p>
+      </div>
+      <div class="new">
+        <h3>La lectura actual</h3>
+        <blockquote>Un periodo de intensa vida cívica, científica y filosófica, con identidad cultural propia.</blockquote>
+        <p>Las inscripciones estudiadas por Louis Robert muestran ciudades activas en lo político, religioso y atlético. Alejandría vive un auge científico sin precedentes, y los filósofos actúan como consejeros, embajadores e impulsores de reformas. Su ruptura con lo oficial es una contracultura, no una retirada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <h4>Referencias</h4>
+      <ol>
+        <li>Carmona Aránzazu, I. D. (s. f.). <i>El mundo helenístico y su filosofía</i> [Material de curso]. Maestría en Filosofía, Universidad Pontificia Bolivariana.</li>
+        <li>García, C. y Ímaz, J. (2007). <i>La filosofía helenística</i>. Editorial Síntesis.</li>
+        <li>Hadot, P. (1998). <i>¿Qué es la filosofía antigua?</i> Fondo de Cultura Económica.</li>
+      </ol>
+      <small>Algunas fechas de fundación y de vida de autores (Academia, Liceo, Jardín, Euclides, Arquímedes, Arcesilao, Crisipo, Septuaginta, Tiberio Graco) se aproximan con la cronología convencional, ya que las fuentes del curso las mencionan sin datarlas. El inicio del periodo se fecha de forma unánime en 323 a.C.; el final se sitúa en 31 a.C. (Accio) o en 30 a.C. (muerte de Cleopatra y anexión de Egipto).</small>
+    </div>
+    <div>
+      <h4>Autoría</h4>
+      <p class="credit">Elaborado por <em>Niver O. Vargas</em></p>
+      <small>Maestría en Filosofía · Diálogos con la tradición filosófica · Universidad Pontificia Bolivariana. Actividad 1: Línea de tiempo sobre el contexto histórico de la filosofía helenística.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+const SRC={G:"García & Ímaz (2007)",H:"Hadot (1998)",C:"Carmona Aránzazu (material UPB)"};
+const ERAS=[
+ {id:"pre",num:"0",cls:"pre",from:-420,to:-323,range:"s. IV a.C.",t:"Antecedentes: la crisis de la pólis",p:"La crisis de la ciudad no comienza con Alejandro. Desde la Guerra del Peloponeso, Atenas acumula experiencias cívicas adversas; Platón y Aristóteles todavía piensan la vida buena dentro del marco de la ciudad, pero ya fundan comunidades filosóficas que la toman con distancia."},
+ {id:"p1",num:"I",cls:"p1",from:-323,to:-280,range:"323 – 280 a.C.",t:"Desintegración del imperio y nuevas monarquías",p:"Los generales de Alejandro, los Diádocos, se reparten por las armas el imperio. Al final se fijan los reinos de las grandes dinastías y el ciudadano de la pólis pasa a ser súbdito de un poder lejano."},
+ {id:"p2",num:"II",cls:"p2",from:-280,to:-168,range:"280 – 168 a.C.",t:"Apogeo de la civilización helenística",p:"Los reinos compiten en esplendor cultural. Alejandría, Pérgamo y Antioquía patrocinan ciencias y letras, mientras Atenas conserva la primacía filosófica. El periodo se cierra bajo la amenaza creciente de Roma."},
+ {id:"p3",num:"III",cls:"p3",from:-168,to:-30,range:"168 – 30 a.C.",t:"Declive y sometimiento a Roma",p:"Empobrecimiento progresivo, derrotas militares y anexiones. Grecia pierde su independencia política, pero Roma, conquistadora, prolonga culturalmente el helenismo."},
+ {id:"leg",num:"∞",cls:"leg",from:null,to:null,range:"s. I a.C. – s. II d.C.",t:"Prolongación y transmisión romana",p:"Conocemos la filosofía helenística en buena parte gracias a autores romanos. Al mismo tiempo, el modo de enseñar cambia: de la discusión de tesis al comentario de textos."}
+];
+const EV=[
+ {e:"pre",y:-404,d:"404 a.C.",c:"pol",t:"Fin de la Guerra del Peloponeso",s:"Atenas entra en un siglo IV de crisis cívica que preludia la del periodo helenístico.",x:"García e Ímaz subrayan que la crisis de la ciudad viene de mucho antes y solo se agudiza a fines del siglo IV. La ciudad, con todo, conserva su papel como foco cultural.",k:["pólis","crisis cívica"],r:"G"},
+ {e:"pre",y:-399,d:"399 a.C.",c:"fil",t:"Proceso y muerte de Sócrates",s:"La Atenas democrática condena por impiedad al filósofo del que se reclamarán casi todas las escuelas helenísticas.",x:"Hadot usa el caso, junto al de Anaxágoras, para cuestionar que la democracia fuera más favorable a la filosofía que las monarquías. Las escuelas helenísticas heredan de Sócrates la tesis de que el mal no está en las cosas sino en nuestros juicios sobre ellas.",k:["herencia socrática","terapéutica"],r:"H"},
+ {e:"pre",y:-387,d:"c. 387 a.C.",c:"fil",t:"Platón funda la Academia",s:"La República y Las Leyes intentan salvar la ciudad desde la filosofía; la Carta VII narra la experiencia de su crisis.",x:"Para Platón la vida feliz se realiza en el marco cívico, aunque la vida filosófica es también un resguardo frente a la corrupción política: el sabio que, como quien se protege del vendaval tras un muro, se mantiene limpio de injusticia.",k:["República","Leyes"],r:"G"},
+ {e:"pre",y:-335,d:"335 a.C.",c:"fil",t:"Aristóteles abre el Liceo",s:"En la Política, la pólis aún aparece como comunidad perfecta y autosuficiente.",x:"Aristóteles estudia las constituciones de muchas ciudades. Para él, quien puede vivir fuera de la comunidad cívica es bestia o dios: precisamente la posibilidad que las escuelas helenísticas reivindicarán para el sabio.",k:["zóon politikón","autárkeia"],r:"G"},
+ {e:"pre",y:-330,d:"c. 330 a.C.",c:"fil",t:"Diógenes y la vida cínica",s:"El cinismo, sin escuela ni dogmas, es un modo de vida que denuncia las convenciones sociales.",x:"Los cínicos no argumentan ni imparten enseñanza: su propia vida, conforme a la naturaleza, contiene toda la doctrina. Son propagandistas que se dirigen a todas las clases sociales, en reacción contra el refinamiento de la cultura urbana.",k:["phýsis","hairesis"],r:"H"},
+ {e:"pre",y:-326,d:"334 – 324 a.C.",c:"cul",t:"La expedición llega a la India",s:"Anaxarco y su discípulo Pirrón acompañan a Alejandro y conocen a los gimnosofistas.",x:"Más que intercambios doctrinales, los griegos quedan impresionados por el modo de vida de los «sabios desnudos»: indiferencia ante lo deseable y lo indeseable y perfecta paz interior. Pirrón, a su regreso, vive retirado del mundo. Hadot sugiere que la experiencia del encuentro entre pueblos pudo nutrir la idea de cosmopolitismo.",k:["gimnosofistas","pirronismo","cosmopolitismo"],r:"H"},
+ {e:"p1",y:-323,d:"323 a.C.",c:"pol",t:"Muere Alejandro Magno en Babilonia",s:"A los 32 años, tras extender lo griego desde Egipto hasta el Indo. Comienza el periodo helenístico.",x:"Alejandro había procurado la fusión de griegos y bárbaros en una comunidad superior animada por la paideía helénica. Según Eratóstenes, dividió a los hombres no en griegos y bárbaros sino en buenos y malos. El ideal fracasa en lo político, pero triunfa en lo cultural.",k:["hellenízein","paideía","ecúmene"],r:"G"},
+ {e:"p1",y:-310,d:"323 – 280 a.C.",c:"pol",t:"Guerras de los Diádocos",s:"Ptolomeos en Egipto, Seléucidas en Siria y Babilonia, Atálidas en Pérgamo, Antigónidas en Macedonia y Grecia.",x:"El imperio universal soñado no se realiza. La pólis pierde su autárkeia política y económica; el destino de los ciudadanos queda al arbitrio del monarca y de la Tyche, la Fortuna imprevisible que desplaza a los antiguos dioses patronos.",k:["Diádocos","Tyche","súbdito"],r:"G"},
+ {e:"p1",y:-306,d:"306 a.C.",c:"fil",t:"Epicuro funda el Jardín",s:"Una comunidad de amigos que comparte comidas y memoriza breves sentencias de la doctrina.",x:"La enseñanza epicúrea es deductiva: el discípulo parte de resúmenes muy breves, pasa a la Carta a Heródoto y puede llegar a los 37 libros Sobre la naturaleza, sin perder nunca de vista el núcleo. La búsqueda del placer verdadero, contra los falsos placeres, motiva toda acción humana.",k:["ataraxía","amistad","Carta a Heródoto"],r:"H"},
+ {e:"p1",y:-300,d:"c. 300 a.C.",c:"fil",t:"Zenón de Citio enseña en la Stoa Poikile",s:"El Pórtico pintado da nombre a la escuela estoica. Antígono Gonatas acude a escucharlo.",x:"Hacia fines del siglo IV casi toda la actividad filosófica se concentra en cuatro escuelas atenienses, instituciones permanentes que sobreviven a sus fundadores y adoptan el nombre de su lugar de reunión. Distinguen entre simples oyentes y verdaderos discípulos, los «compañeros».",k:["Stoa","schole","discípulos"],r:"H"},
+ {e:"p1",y:-295,d:"c. 295 a.C.",c:"cul",t:"Museo y Biblioteca de Alejandría",s:"Organizados por Demetrio de Falero bajo los Ptolomeos, en la tradición científica aristotélica.",x:"Alejandría se convierte en el centro animado de la civilización helenística: el Museo reúne investigación en todas las ciencias, de la astronomía a la medicina, y la Biblioteca concentra la literatura filosófica y científica. Atenas, en cambio, sigue siendo la sede de la filosofía.",k:["Museo","Biblioteca","Ptolomeos"],r:"H"},
+ {e:"p1",y:-290,d:"c. 300 – 290 a.C.",c:"cul",t:"Euclides y la nueva ciencia",s:"Florecen las ciencias particulares: geometría, astronomía, medicina, filología.",x:"Es la época de Euclides, Aristarco de Samos y los médicos Herófilo y Erasístrato. Los filósofos les reprochan su unilateralidad: fijar principios sin una visión total del universo ni de su relación con el fin del hombre (télos).",k:["télos","ciencias particulares"],r:"G"},
+ {e:"p2",y:-268,d:"c. 268 a.C.",c:"fil",t:"Arcesilao dirige una Academia crítica",s:"La escuela de Platón adopta un método de refutación: el oyente propone una tesis y es llevado a admitir su contraria.",x:"La enseñanza por «tesis» (¿es un mal la muerte?, ¿es el placer el bien supremo?) es el esquema fundamental de la época. Puede ser dialéctica o retórica, dogmática o aporética. Las escuelas escépticas, a diferencia de las dogmáticas, buscan suspender el juicio en lugar de transformarlo.",k:["tesis","epoché","dialéctica"],r:"H"},
+ {e:"p2",y:-261,d:"261 a.C.",c:"pol",t:"Atenas honra a Zenón con una corona de oro",s:"Un decreto público, bajo presión de Antígono Gonatas, le concede además una tumba a expensas de la ciudad.",x:"El decreto no elogia sus teorías sino la coherencia entre su vida y sus enseñanzas y su ejemplo para los jóvenes. La comedia de la época se burla de su austeridad: pan, higos y agua. Para Hadot, este texto muestra que «filosofía» significa, ante todo, una manera de vivir.",k:["coherencia","modo de vida"],r:"H"},
+ {e:"p2",y:-250,d:"s. III a.C.",c:"cul",t:"La koiné y la traducción de los Setenta",s:"La comunidad judía de Alejandría traduce sus escrituras al griego porque ya no entiende el hebreo.",x:"La lengua común permite comunicarse igual en Gades o Massilia que en Damasco o Babilonia. Ser griego deja de ser cuestión de sangre: como había dicho Isócrates, es griego quien participa de la educación helénica. Lo que ahora distingue a los hombres es estar o no civilizados.",k:["koiné","Septuaginta","civilidad"],r:"G"},
+ {e:"p2",y:-235,d:"s. III a.C.",c:"pol",t:"El estoico Esfero y la reforma espartana",s:"Influye sobre los reyes Agis y Cleómenes de Esparta.",x:"Hadot desmiente que los filósofos helenísticos se desentiendan de la política: actúan como consejeros de príncipes y embajadores de ciudades, y los estoicos inspiran reformas políticas y sociales. Nunca renuncian a cambiar la sociedad, al menos con el ejemplo de su vida.",k:["consejero","reforma"],r:"H"},
+ {e:"p2",y:-232,d:"c. 232 a.C.",c:"fil",t:"Crisipo al frente de la Stoa",s:"Sistematiza el estoicismo en al menos 700 tratados, hoy perdidos.",x:"El sistema estoico es un núcleo de dogmas entrelazados con rigor y condensados en fórmulas, con valor persuasivo y mnemotécnico. Para Hadot, nuestra visión de la filosofía antigua sería otra si se hubieran perdido Platón y Aristóteles y conservado Zenón y Crisipo.",k:["sistema","pérdida de fuentes"],r:"H"},
+ {e:"p2",y:-212,d:"287 – 212 a.C.",c:"cul",t:"Arquímedes de Siracusa",s:"Matemático y mecánico: emblema del extraordinario desarrollo técnico del periodo.",x:"Junto a Eratóstenes de Cirene, Arquímedes desmiente la imagen de un helenismo decadente. Siracusa, Rodas, Éfeso, Mileto, Priene, Tarso y Cirene son centros de una vida cultural brillante.",k:["ciencias exactas","técnica"],r:"G"},
+ {e:"p2",y:-197,d:"197 a.C.",c:"pol",t:"Batalla de Cinoscéfalas",s:"Filipo V de Macedonia es vencido por el cónsul Tito Quincio Flaminino.",x:"Primera de las derrotas decisivas de Macedonia ante Roma, que desde fines del siglo III había entrado en contacto con el mundo griego y empezado a descubrir la filosofía.",k:["Roma","Macedonia"],r:"G"},
+ {e:"p3",y:-168,d:"168 a.C.",c:"pol",t:"Batalla de Pidna",s:"Perseo, hijo de Filipo V, cae ante Paulo Emilio. Termina el apogeo helenístico.",x:"Comienza la tercera etapa: empobrecimiento, declive progresivo y mayor sometimiento a Roma, mientras las influencias orientales se insinúan en la cultura.",k:["declive"],r:"G"},
+ {e:"p3",y:-148,d:"148 a.C.",c:"pol",t:"Macedonia, provincia romana",s:"Junto con Iliria y el Epiro.",x:"Las fuentes recogen estos datos solo para recordar el destino político de Grecia; lo decisivo, insisten García e Ímaz, es la expansión cultural de lo griego, que continúa.",k:["provincia"],r:"G"},
+ {e:"p3",y:-146,d:"146 a.C.",c:"pol",t:"Lucio Mumio arrasa Corinto",s:"Saqueo ejemplar de la próspera ciudad comercial. Desde 143, Grecia queda bajo el gobernador de Macedonia.",x:"Tras la destrucción de Corinto, Rodas, con apoyo romano, se convierte en la capital comercial del Egeo.",k:["Corinto","Rodas"],r:"G"},
+ {e:"p3",y:-133,d:"133 a.C.",c:"fil",t:"Blosio y Tiberio Graco",s:"El estoico Blosio influye sobre el tribuno reformador romano.",x:"Otro ejemplo, citado por Hadot, del papel activo de los estoicos en las reformas sociales. Muchos romanos, como más tarde Cicerón, viajan a Atenas para formarse como hombres de Estado y aprender a gobernarse a sí mismos.",k:["estoicismo romano"],r:"H"},
+ {e:"p3",y:-86,d:"marzo de 86 a.C.",c:"cul",t:"Sila saquea Atenas",s:"Se pierde buena parte de las bibliotecas de las escuelas filosóficas.",x:"Las obras técnicas se guardaban en las bibliotecas de cada escuela; su destrucción, junto con las sucesivas de la Biblioteca de Alejandría, explica por qué conocemos el periodo de manera tan fragmentaria. La desaparición de las instituciones atenienses cambiará el modo de hacer filosofía.",k:["transmisión","fragmentos"],r:"H"},
+ {e:"p3",y:-31,d:"31 – 30 a.C.",c:"pol",t:"Accio y fin de Cleopatra",s:"Octavio vence a Marco Antonio; Egipto, último reino helenístico, es anexionado por Roma.",x:"El material del curso fija el cierre en la batalla de Accio (31 a.C.); García e Ímaz y Hadot, en la incorporación de Egipto tras la muerte de Cleopatra (30 a.C.). Todos coinciden en que, culturalmente, el helenismo se prolonga mucho más allá.",k:["Accio","Augusto"],r:"C"},
+ {e:"leg",y:-50,d:"s. I a.C.",c:"fil",t:"Cicerón, Lucrecio, Horacio",s:"Los autores de la República romana conservan y transmiten la tradición helenística.",x:"Cicerón reprocha a los estoicos sus preguntas breves y punzantes que no transforman el alma; Lucrecio vierte el epicureísmo en verso. En el mismo siglo surge la novela, relato de amor y aventuras para un público urbano.",k:["transmisión","novela"],r:"H"},
+ {e:"leg",y:60,d:"s. I – II d.C.",c:"fil",t:"Séneca, Epicteto, Marco Aurelio",s:"El estoicismo imperial, en cartas, diatribas y meditaciones.",x:"Son los géneros de la «línea práctica»: escritos para ejercitarse y transformar la propia vida. Marco Aurelio, aun siendo emperador, expresa la soledad del filósofo ante la inercia de sus contemporáneos.",k:["ejercicios espirituales","diatriba"],r:"C"},
+ {e:"leg",y:200,d:"s. II d.C.",c:"cul",t:"Alejandro de Afrodisia y la era del comentario",s:"La enseñanza pasa de discutir tesis a comentar textos de autoridad.",x:"Alejandro de Afrodisia describe cómo los antiguos daban clase argumentando a favor y en contra de una tesis, y no comentando libros como en su tiempo. El cambio marca la diferencia entre la filosofía helenística y la imperial.",k:["comentario","método"],r:"H"},
+ {e:"leg",y:1836,d:"s. XIX",c:"cul",t:"Droysen acuña el «helenismo»",s:"Solo desde entonces la época se estudia como un periodo con significación cultural propia.",x:"Antes, incluso para Hegel, era una transición hacia Roma. La historiografía del siglo XX, con autores como Louis Robert y Pierre Hadot, desmonta la imagen de decadencia.",k:["historiografía"],r:"G"}
+];
+const CAT={pol:"Política",cul:"Cultura y ciencia",fil:"Filosofía"};
+const CCOL={pol:"var(--c-pol)",cul:"var(--c-cul)",fil:"var(--c-fil)"};
+
+// meandro griego (SVG en data URI, colores de marca)
+const mz=encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 14"><path d="M0 12.5H9V2.5H20V9.5H13.5V6H16.5" fill="none" stroke="#FF0017" stroke-width="2.2" stroke-linecap="square"/><path d="M20 12.5H28" fill="none" stroke="#FF0017" stroke-width="2.2"/></svg>');
+document.getElementById('meander').style.backgroundImage='url("data:image/svg+xml,'+mz+'")';
+
+// ---- Línea del tiempo
+const main=document.getElementById('timeline');
+let html='';
+ERAS.forEach(er=>{
+  html+=`<div class="era ${er.cls}" id="era-${er.id}"><div class="num" aria-hidden="true">${er.num}</div><div class="range">${er.range}</div><h2>${er.t}</h2><p>${er.p}</p></div><ol class="tl">`;
+  EV.filter(v=>v.e===er.id).sort((a,b)=>a.y-b.y).forEach((v,i)=>{
+    const id='ev-'+er.id+'-'+i; v.id=id;
+    html+=`<li class="ev" id="${id}" data-cat="${v.c}" style="--c:${CCOL[v.c]}"><span class="node" aria-hidden="true"></span><div class="card">
+      <button class="card-btn" aria-expanded="false" aria-controls="${id}-d" id="${id}-b">
+        <span class="date"><span class="y">${v.d}</span><span class="tag">${CAT[v.c]}</span></span>
+        <h3>${v.t}</h3><p class="s">${v.s}</p>
+        <span class="more"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="2"/></svg>Profundizar</span>
+      </button>
+      <div class="detail" id="${id}-d" hidden><p>${v.x}</p><div class="terms">${v.k.map(t=>`<span>${t}</span>`).join('')}</div><cite>Fuente: ${SRC[v.r]}</cite></div>
+    </div></li>`;
+  });
+  html+='</ol>';
+});
+html+='<div class="empty" id="empty" hidden>Active al menos una dimensión para ver los acontecimientos.</div>';
+main.innerHTML=html;
+
+main.addEventListener('click',e=>{
+  const b=e.target.closest('.card-btn'); if(!b) return;
+  const d=document.getElementById(b.getAttribute('aria-controls'));
+  const open=b.getAttribute('aria-expanded')==='true';
+  b.setAttribute('aria-expanded',String(!open)); d.hidden=open;
+});
+
+// ---- Regla proporcional (-420 a -20)
+const R0=-420,R1=-20,pct=y=>((y-R0)/(R1-R0))*100;
+const ruler=document.getElementById('ruler');
+let rh='<div class="axis"></div>';
+ERAS.filter(e=>e.from!==null).forEach(er=>{
+  rh+=`<button class="band ${er.cls}" data-era="${er.id}" style="left:${pct(er.from)}%;width:calc(${pct(er.to)-pct(er.from)}% - 2px)" title="${er.t}">${er.num==='0'?'Antecedentes':'Periodo '+er.num}</button>`;
+});
+for(let y=-400;y<=-40;y+=40){rh+=`<span class="tick" style="left:${pct(y)}%">${-y}</span>`}
+EV.filter(v=>v.y>=R0&&v.y<=R1).forEach(v=>{
+  rh+=`<button class="pin" data-target="${v.id}" data-cat="${v.c}" style="left:${pct(v.y)}%;--c:${CCOL[v.c]}" title="${v.d} · ${v.t}" aria-label="${v.d}: ${v.t}"></button>`;
+});
+ruler.innerHTML=rh;
+ruler.addEventListener('click',e=>{
+  const p=e.target.closest('.pin'), b=e.target.closest('.band');
+  if(p){const el=document.getElementById(p.dataset.target);el.scrollIntoView({block:'center'});flash(el);}
+  else if(b){document.getElementById('era-'+b.dataset.era).scrollIntoView({block:'start'});}
+});
+function flash(el){el.classList.add('hot');setTimeout(()=>el.classList.remove('hot'),1600);}
+ruler.addEventListener('mouseover',e=>{const p=e.target.closest('.pin');document.querySelectorAll('.ev.hot').forEach(x=>x.classList.remove('hot'));if(p)document.getElementById(p.dataset.target).classList.add('hot');});
+ruler.addEventListener('mouseleave',()=>document.querySelectorAll('.ev.hot').forEach(x=>x.classList.remove('hot')));
+
+// ---- Filtros
+const state={pol:true,cul:true,fil:true};
+document.querySelectorAll('.chip[data-cat]').forEach(ch=>ch.addEventListener('click',()=>{
+  const c=ch.dataset.cat; state[c]=!state[c]; ch.setAttribute('aria-pressed',String(state[c])); apply();
+}));
+function apply(){
+  document.querySelectorAll('.ev').forEach(li=>li.hidden=!state[li.dataset.cat]);
+  document.querySelectorAll('.pin').forEach(p=>p.hidden=!state[p.dataset.cat]);
+  document.getElementById('empty').hidden=Object.values(state).some(Boolean);
+}
+const ex=document.getElementById('f-expand');
+ex.addEventListener('click',()=>{
+  const on=ex.getAttribute('aria-pressed')!=='true';
+  ex.setAttribute('aria-pressed',String(on)); ex.textContent=on?'Contraer todo':'Expandir todo';
+  document.querySelectorAll('.card-btn').forEach(b=>{b.setAttribute('aria-expanded',String(on));document.getElementById(b.getAttribute('aria-controls')).hidden=!on;});
+});
+
+// ---- Periodo activo en la regla
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){const id=en.target.id.replace('era-','');document.querySelectorAll('.band').forEach(b=>b.classList.toggle('on',b.dataset.era===id));}})},{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('.era').forEach(e=>io.observe(e));
+}
+
+// ---- Escuelas
+const SCH=[
+ {g:"Ἀκαδήμεια",n:"Academia",w:"Platón · c. 387 a.C. · gimnasio de Academo",o:"La ignorancia del Bien; la ciudad corrompida.",t:"Amor al Bien; diálogo y dialéctica; con Arcesilao, refutación de toda tesis.",k:"Dogmática → crítica"},
+ {g:"Λύκειον",n:"Liceo",w:"Aristóteles · 335 a.C. · gimnasio del Liceo",o:"Una vida ajena al espíritu y atrapada en los compromisos de la ciudad.",t:"Vida conforme al espíritu: investigación y contemplación.",k:"Dogmática"},
+ {g:"Κῆπος",n:"Jardín",w:"Epicuro · 306 a.C. · casa y huerto",o:"La búsqueda de falsos placeres.",t:"Placer verdadero y amistad; memorizar el núcleo deductivo de la doctrina.",k:"Dogmática"},
+ {g:"Στοά",n:"Stoa",w:"Zenón de Citio · c. 300 a.C. · Pórtico pintado",o:"La persecución del placer y del interés egoísta.",t:"Vivir conforme a la razón y a la naturaleza; sistema rigurosamente entrelazado.",k:"Dogmática"},
+ {g:"Κυνισμός",n:"Cinismo",w:"Diógenes · s. IV a.C. · sin sede",o:"Las convenciones y obligaciones sociales.",t:"Retorno a la simplicidad natural, predicado con el propio ejemplo.",k:"Modo de vida sin dogmas"},
+ {g:"Πυρρωνισμός",n:"Pirronismo",w:"Pirrón de Élide · c. 320 a.C. · sin sede",o:"Las falsas opiniones.",t:"Suspender el juicio (epoché) para alcanzar la tranquilidad del alma.",k:"Escéptica"}
+];
+document.getElementById('schools').innerHTML=SCH.map(s=>`<article class="school"><div class="gk" lang="grc">${s.g}</div><h3>${s.n}</h3><div class="who">${s.w}</div><dl><div><dt>Origen de la desgracia</dt><dd>${s.o}</dd></div><div><dt>Terapia</dt><dd>${s.t}</dd></div></dl><span class="kind">${s.k}</span></article>`).join('');
+
+// ---- Glosario
+const GL=[
+ ["Autarquía","αὐτάρκεια","Gobierno y suficiencia de sí: lo que la pólis perdió, el sabio lo recupera para el individuo."],
+ ["Ataraxia","ἀταραξία","Tranquilidad del ánimo, ausencia de perturbación: meta común de todas las escuelas."],
+ ["Cura sui","ἐπιμέλεια ἑαυτοῦ","Cuidado de sí: ocuparse primero de uno mismo y, desde allí, de los otros y de lo otro."],
+ ["Cosmopolitismo","κοσμοπολίτης","El sabio es ciudadano del mundo; su comunidad (koinonía) ya no es una pólis concreta."],
+ ["Parrhesía","παρρησία","Franqueza en el hablar: decir la verdad y decirla con verdad."],
+ ["Sophós","σοφός","El sabio libre, autárquico y feliz, que da testimonio de su doctrina con su vida."],
+ ["Télos","τέλος","Fin último del hombre; la felicidad del sabio coincide con la vida razonable y conforme a la naturaleza."],
+ ["Koiné","κοινὴ διάλεκτος","Lengua común que hizo posible la circulación de ideas en toda la ecúmene."]
+];
+const gl=document.getElementById('gloss');
+gl.innerHTML=GL.map((g,i)=>`<button class="term" id="term-${i}" aria-pressed="false"><span class="hint" aria-hidden="true">+</span><span class="w">${g[0]}</span><span class="g" lang="grc">${g[1]}</span><span class="def">${g[2]}</span></button>`).join('');
+gl.addEventListener('click',e=>{const t=e.target.closest('.term');if(t)t.setAttribute('aria-pressed',String(t.getAttribute('aria-pressed')!=='true'));});
+})();
+</script>
+
+</body></html>
