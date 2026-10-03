@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medicina para Mortales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;1,6..96,500&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+
+/* Layout: columna dórica vertical (eje del tiempo) que atraviesa tres periodos + antecedentes y legado; regla de escala proporcional fija arriba. */
+:root{
+  --upb-red:#E60015;      /* rojo UPB ajustado para texto sobre claro */
+  --upb-red-brand:#FF0017;
+  --upb-gold:#C99412;     /* oro UPB oscurecido para legibilidad en claro */
+  --upb-gold-brand:#FFCA45;
+  --ink:#141210;
+  --bg:#F4F3F1;
+  --surface:#FFFFFF;
+  --surface-2:#ECEAE6;
+  --fg:#1A1714;
+  --muted:#5E5850;
+  --line:#D6D2CB;
+  --spine:#1A1714;
+  --c-pol:#E60015;
+  --c-cul:#B07F00;
+  --c-fil:#1A1714;
+  --shadow:0 1px 2px rgba(20,18,16,.06),0 8px 24px -12px rgba(20,18,16,.18);
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --upb-red:#FF3346; --upb-gold:#FFCA45;
+    --bg:#0E0D0C; --surface:#181614; --surface-2:#211F1C;
+    --fg:#F2EFEA; --muted:#A79F94; --line:#33302B; --spine:#FFCA45;
+    --c-pol:#FF3346; --c-cul:#FFCA45; --c-fil:#F2EFEA;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --upb-red:#FF3346; --upb-gold:#FFCA45;
+  --bg:#0E0D0C; --surface:#181614; --surface-2:#211F1C;
+  --fg:#F2EFEA; --muted:#A79F94; --line:#33302B; --spine:#FFCA45;
+  --c-pol:#FF3346; --c-cul:#FFCA45; --c-fil:#F2EFEA;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--upb-gold-brand);outline-offset:3px;border-radius:4px}
+
+/* ---------- Banda institucional ---------- */
+.inst{background:var(--ink);color:#fff;border-bottom:4px solid var(--upb-red-brand)}
+.inst .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:14px}
+.logo-plate{background:#fff;border-radius:6px;padding:8px 14px;display:flex;align-items:center}
+.logo-plate svg{width:210px;height:auto;display:block}
+.inst-meta{text-align:right;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;line-height:1.7}
+.inst-meta b{color:var(--upb-gold-brand);font-weight:600}
+@media (max-width:620px){.inst-meta{text-align:left}}
+
+
+/* Layout: tarjeta compacta para iframe; el cuadrifármaco como botiquín de cuatro remedios, cada uno abre su relación con la finitud. */
+body{font-size:15.5px;line-height:1.5}
+.inst .wrap{padding-block:8px;gap:10px}
+.logo-plate{padding:5px 10px}
+.logo-plate svg{width:130px}
+.inst-meta{font-size:10.5px;line-height:1.55}
+.box{max-width:820px;margin:0 auto;padding-inline:16px;padding-block:18px 14px}
+.kick{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--upb-red);margin:0 0 8px}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,5vw,42px);line-height:1;margin:0;letter-spacing:-.01em}
+h1 em{font-style:italic;font-weight:500;color:var(--upb-red)}
+.lead{margin:10px 0 0;max-width:64ch}
+.by{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.by strong{color:var(--fg)}
+.frame{margin-top:14px;display:flex;gap:12px;align-items:center;background:var(--ink);color:#fff;border-radius:4px;padding:12px 14px}
+.frame .lat{font-family:var(--f-display);font-style:italic;font-size:16px;color:var(--upb-gold-brand);line-height:1.25;flex:0 0 auto;max-width:45%}
+.frame p{margin:0;font-size:13.5px;color:#E3DED6}
+
+.kit-h{font:600 10.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.kit{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ph{appearance:none;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:4px;padding:10px 12px 11px;cursor:pointer;font:inherit;display:flex;flex-direction:column;gap:4px;min-width:0;transition:border-color .15s,transform .1s}
+.ph:hover{border-color:var(--fg)}
+.ph:active{transform:scale(.98)}
+.ph .lim{font:600 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--upb-red)}
+.ph .rx{font-family:var(--f-display);font-weight:700;font-size:16.5px;line-height:1.15}
+.ph[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ph[aria-selected="true"] .lim{color:var(--upb-gold-brand)}
+@media (max-width:620px){.kit{grid-template-columns:1fr 1fr}}
+
+.panel{margin-top:12px;border:1px solid var(--line);border-top:3px solid var(--upb-red);border-radius:4px;background:var(--surface);padding:14px 16px}
+.panel[hidden]{display:none}
+.panel h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.2;margin:0 0 10px;text-wrap:balance}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cols h3{font:600 10.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px;color:var(--muted)}
+.cols p{margin:0;font-size:14.5px}
+.cols .carta{border-left:3px solid var(--upb-gold);padding-left:12px}
+.cols .fin{border-left:3px solid var(--upb-red);padding-left:12px}
+.quote{font-family:var(--f-display);font-style:italic;font-size:15.5px}
+.ex{margin-top:12px;display:flex;gap:10px;align-items:flex-start;background:var(--surface-2);border-radius:4px;padding:10px 12px;font-size:14px}
+.ex b{font:600 10.5px/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--upb-red);white-space:nowrap}
+.ask{margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--line);font-family:var(--f-display);font-style:italic;font-size:16.5px;line-height:1.38}
+.ask span{font-style:normal;font-weight:800;color:var(--upb-gold);margin-right:6px}
+@media (max-width:620px){.cols{grid-template-columns:1fr}.frame{flex-direction:column;align-items:flex-start}.frame .lat{max-width:none}}
+
+.close{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.close div{border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:14px;min-width:0}
+.close b{display:block;font-family:var(--f-display);font-size:16px;margin-bottom:3px}
+@media (max-width:620px){.close{grid-template-columns:1fr}}
+
+.refs{max-width:820px;margin:0 auto;padding-inline:16px;padding-block:12px 16px;border-top:1px solid var(--line);font-size:12px;line-height:1.5;color:var(--muted)}
+.refs b{font:600 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--fg);display:block;margin-bottom:5px}
+.refs p{margin:0 0 3px;padding-left:1.6em;text-indent:-1.6em}
+.refs a{color:var(--fg);text-decoration-color:var(--upb-red);text-underline-offset:2px}
+@media (max-width:560px){.inst-meta{display:none}}
+</style>
+
+</head>
+<body>
+<header class="inst">
+  <div class="wrap">
+    <div class="logo-plate" aria-label="Universidad Pontificia Bolivariana"><svg version="1.1" role="img" aria-label="Logosímbolo UPB" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 748.93 284.11" style="enable-background:new 0 0 748.93 284.11;" xml:space="preserve">
+<style type="text/css">
+	.upb0{fill:#FF0017;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.upb1{fill:#FFCA45;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.upb2{fill:#FFCA45;stroke:#000000;stroke-miterlimit:10;}
+	.upb3{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.upb4{fill:#FFCA45;}
+	.upb5{fill:#FED44A;}
+</style>
+<g>
+	<polygon class="upb0" points="53.82,123.48 32.35,123.48 8.24,73.27 6.77,73.27 6.77,208.01 8.56,208.01 32.24,162.64 53.82,162.75 
+			"/>
+	<polygon class="upb0" points="204.56,123.48 226.03,123.48 250.14,73.27 251.61,73.27 251.61,208.01 249.82,208.01 226.14,162.64 
+		204.56,162.75 	"/>
+	<polygon class="upb0" points="148.6,224.85 148.6,246.32 198.81,270.43 198.81,271.9 64.08,271.9 64.08,270.11 109.44,246.43 
+		109.34,224.85 	"/>
+	<polygon class="upb0" points="109.43,54.99 109.43,33.52 59.22,9.41 59.22,7.94 193.95,7.94 193.95,9.73 148.58,33.41 148.69,54.99 
+			"/>
+	<rect x="204.56" y="135.56" class="upb1" width="21.26" height="14.37"/>
+	
+		<rect x="118.79" y="228.3" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -106.0562 364.9088)" class="upb1" width="21.26" height="14.37"/>
+	
+		<rect x="118.79" y="37.18" transform="matrix(6.123234e-17 -1 1 6.123234e-17 85.0669 173.7857)" class="upb1" width="21.26" height="14.37"/>
+	<rect x="32.56" y="135.56" class="upb1" width="21.26" height="14.37"/>
+	<path class="upb1" d="M129.44,231.82c-0.11-3.95-3.34-7.11-7.3-7.13H85.39c-14.22-1.51-26.09-10.86-31.21-23.65l-0.37-2.08
+		c0-8.53,0-143.97,0-143.97h150.74v144.39v1.66c-5.12,12.79-16.99,22.14-31.21,23.65l-36.79,0c-3.95,0.12-7.12,3.36-7.12,7.34
+		c0,0.15,0,0.29,0.01,0.44"/>
+	<path d="M129.63,214.22c-0.01-0.1-0.01-0.2-0.01-0.29c0-2.68,2.37-4.86,5.33-4.94c0,0,21.93,0,26.66,0l15.05,0h0.75
+		c4.36-0.11,7.92-3.47,8.46-7.79v-1.29v-12.53c0-6.74,0-115.37,0-115.37H72.98c0,0,0,102.4,0,114.53v13.37l0.07,1.28
+		c0.53,4.32,4.1,7.68,8.46,7.79l0.63,0h15.05c3.92,0,26.96,0,26.96,0c2.97,0.01,5.39,2.14,5.47,4.8"/>
+	<path class="upb2" d="M126.16,128.63c0.28,1.73,1.1,3.98,0.7,5.14c-0.54,1.55-1.98,2.56-3.22,3.63c-2.25,1.94-4.09,4.49-4.64,7.41
+		c-0.55,2.92,0.4,6.22,2.79,7.98c0.98,0.72,2.14,1.16,3.31,1.5c3.24,0.96,6.76,1.27,10.01,0.32c3.25-0.95,6.18-3.29,7.34-6.46
+		c1.24-3.37,0.35-7.24-1.55-10.29s-4.72-5.4-7.58-7.57c-0.67-0.51-2.43-2.17-4.06-3.18c-1.14-0.71-2.43-1.24-3.75-1.45
+		C125.93,126.4,126.02,127.78,126.16,128.63z"/>
+	<path class="upb3" d="M127.57,138.23c-3.15,1.38-5.05,4.92-4.95,8.36c0.04,1.42,0.41,2.88,1.35,3.94c1.23,1.4,3.21,1.88,5.08,1.98
+		c2.4,0.13,4.87-0.27,6.94-1.49s3.69-3.31,3.98-5.7c0.28-2.24-0.6-4.47-1.74-6.42c-2.26-3.86-5.65-7.06-9.63-9.1"/>
+	<path class="upb3" d="M128.55,138.67c-1.59,1.17-2.46,3.11-2.77,5.06c-0.25,1.55-0.18,3.19,0.48,4.62c0.66,1.43,1.97,2.6,3.52,2.84"
+		/>
+	<path class="upb3" d="M129.45,133.13c2.27,2.28,4.2,4.91,5.7,7.76c0.92,1.74,1.69,3.65,1.57,5.61c-0.12,1.96-1.36,3.97-3.27,4.43"/>
+	<path class="upb3" d="M129.85,139.44c-0.51,0.79-0.79,1.71-1.05,2.62c-0.37,1.31-0.69,2.72-0.27,4.01c0.28,0.85,0.87,1.56,1.48,2.21
+		c0.29,0.3,0.58,0.6,0.89,0.88"/>
+	<path class="upb3" d="M131.38,138.8c0.55,0.65,0.87,1.46,1.15,2.26c0.41,1.15,0.78,2.33,0.84,3.55c0.07,1.56-0.39,3.15-1.29,4.43"/>
+	<g>
+		<path class="upb4" d="M102.27,114.39v-1.19c3.06-0.34,3.43-0.76,2.77-2.38c-0.61-1.66-1.55-3.78-2.54-6.45H92.36
+			c-0.75,1.91-1.46,3.57-2.12,5.31c-1.03,2.76-0.38,3.1,3.48,3.52v1.19H82.86v-1.19c2.96-0.34,3.71-0.64,5.36-4.46l9.73-22.29
+			l1.5-0.25c2.96,7.26,6.2,15.29,9.16,22.63c1.5,3.69,1.93,4.03,5.26,4.37v1.19H102.27z M97.57,91.75c-1.5,3.65-3.1,7.52-4.51,10.87
+			h8.79L97.57,91.75z"/>
+	</g>
+	<g>
+		<path class="upb4" d="M110.45,166.86c-2.73,0.17-3.73,0.83-3.82,2.75c-0.04,0.96-0.13,2.71-0.13,6.54v4.5
+			c0,4.25-0.52,7.5-3.04,10.04c-2.04,2.04-4.99,2.67-7.98,2.67c-2.52,0-5.21-0.5-7.11-1.92c-2.6-1.92-3.86-4.79-3.86-9.66v-10.62
+			c0-3.75-0.35-4-3.82-4.29v-1.17H92.1v1.17c-3.47,0.21-3.82,0.54-3.82,4.29v10.41c0,6.08,2.99,9.41,8.2,9.41
+			c6.16,0,8.11-3.66,8.11-10.58v-4.25c0-3.83-0.13-5.41-0.22-6.54c-0.13-1.87-1.13-2.58-4.34-2.75v-1.17h10.41V166.86z"/>
+	</g>
+	<g>
+		<path class="upb4" d="M132.39,165.56c3.08,0,5.55,0.56,7.33,1.85c1.69,1.25,2.86,3.26,2.86,6.1c0,6.27-5.42,8.8-9.54,8.8
+			c-0.48,0-0.91-0.04-1.17-0.09l-2.99-0.77v6.7c0,3.61,0.3,3.69,4.29,4.12v1.2h-11.97v-1.2c3.73-0.39,3.9-0.64,3.9-4.21v-17.04
+			c0-3.82-0.48-3.91-3.9-4.25v-1.2H132.39z M128.87,179.94c0.52,0.26,1.69,0.56,3.17,0.56c2.91,0,6.51-1.46,6.51-6.87
+			c0-4.72-3.12-6.61-6.77-6.61c-1.26,0-2.17,0.21-2.43,0.51c-0.35,0.3-0.48,0.82-0.48,1.97V179.94z"/>
+	</g>
+	<g>
+		<path class="upb4" d="M167.82,178.46c4.16,0.69,7.55,2.66,7.55,6.83c0,2.92-1.65,5.24-4.21,6.61c-2.26,1.24-4.47,1.67-7.5,1.67
+			h-10.67v-1.2c3.69-0.34,3.9-0.73,3.9-4.12v-17.21c0-3.56-0.39-3.86-3.9-4.16v-1.2h11.37c3.25,0,5.29,0.56,6.68,1.5
+			c1.52,1.03,2.56,2.62,2.56,4.81C173.59,176.01,170.25,177.86,167.82,178.46z M162.83,177.94c4.77,0,6.72-1.89,6.72-5.41
+			c0-3-1.87-5.32-6.03-5.32c-1.21,0-2,0.13-2.43,0.43c-0.35,0.26-0.48,0.73-0.48,2.1v8.2H162.83z M160.62,188.16
+			c0,3.09,0.74,3.86,3.82,3.86c3.38,0,6.68-1.8,6.68-6.31c0-4.38-3.12-6.27-8.42-6.27h-2.08V188.16z"/>
+	</g>
+	<path class="upb5" d="M159.71,113.54v-2.67c2.59-0.36,4.54-1.58,5.86-3.66c1.32-2.09,1.98-4.83,1.98-8.23c0-2.94-0.37-5.22-1.1-6.84
+		c-0.73-1.62-1.8-2.85-3.2-3.7c-1.41-0.85-3.13-1.27-5.17-1.27c-1.53,0-2.97,0.26-4.32,0.79c-1.35,0.53-2.49,1.37-3.39,2.54
+		c-0.9,1.17-1.51,2.45-1.82,3.85c-0.31,1.4-0.46,2.91-0.46,4.52c0,3.53,0.67,6.33,2,8.4c1.33,2.07,3.28,3.27,5.84,3.62v2.67
+		c-1.32,0.04-3.17,0.07-5.56,0.1s-4.45,0.09-6.19,0.16c-0.11-1.49-0.33-3.46-0.67-5.92l0.15-0.13h0.54l0.15,0.13
+		c0.25,0.99,0.44,1.63,0.58,1.92c0.14,0.29,0.36,0.5,0.67,0.63c0.3,0.13,0.81,0.19,1.52,0.19h4.88v-0.29
+		c-2.53-1.08-4.47-2.69-5.83-4.85c-1.36-2.15-2.04-4.63-2.04-7.45c0-2.54,0.53-4.69,1.59-6.45c1.06-1.76,2.63-3.12,4.73-4.07
+		s4.65-1.43,7.65-1.43c4.34,0,7.66,1.07,9.98,3.2c2.32,2.13,3.47,5.05,3.47,8.76c0,1.23-0.13,2.42-0.4,3.57
+		c-0.27,1.15-0.72,2.29-1.36,3.42c-0.64,1.13-1.47,2.15-2.48,3.04c-1.01,0.9-2.22,1.66-3.64,2.26v0.29h4.9
+		c1.08,0,1.74-0.16,1.98-0.49c0.23-0.33,0.49-1.08,0.77-2.25l0.15-0.13h0.54l0.15,0.13c-0.33,2.45-0.55,4.42-0.67,5.92
+		c-1.75-0.08-3.8-0.13-6.15-0.15L159.71,113.54z"/>
+</g>
+<g>
+	<path d="M275.69,73.09h19.03v46.26c0,4.45,0.92,7.8,2.75,10.04c1.83,2.24,4.56,3.36,8.19,3.36c3.79,0,6.77-1.24,8.95-3.72
+		c2.18-2.48,3.27-5.9,3.27-10.25V78.63h-5.54v-5.54h19.03v60.51h5.49v5.54h-18.51l-0.38-6.68c-2.56,2.68-5.3,4.7-8.24,6.04
+		s-6.11,2.01-9.52,2.01c-6.22,0-10.94-1.74-14.16-5.23c-3.22-3.49-4.83-8.61-4.83-15.36V78.63h-5.54V73.09z"/>
+</g>
+<g>
+	<path d="M340.58,133.61h24.57c9.22,0,16.4,2.12,21.54,6.37c5.14,4.25,7.72,10.14,7.72,17.68c0,6.98-2.35,12.75-7.05,17.31
+		c-4.7,4.56-10.59,6.84-17.66,6.84c-1.93,0-3.73-0.14-5.4-0.43c-1.67-0.28-3.24-0.73-4.69-1.33v14.06h6.49v5.54h-25.52v-5.54h5.54
+		v-54.97h-5.54V133.61z M359.61,139.62v27.18c0,3.47,0.58,5.93,1.75,7.39c1.17,1.45,3.11,2.18,5.82,2.18c3.95,0,7.09-1.56,9.45-4.69
+		c2.35-3.12,3.53-7.34,3.53-12.64c0-6.12-1.54-10.89-4.62-14.3c-3.08-3.41-7.39-5.11-12.95-5.11H359.61z"/>
+</g>
+<g>
+	<path d="M318.81,230.92c6,0.63,10.68,2.64,14.06,6.04c3.38,3.39,5.07,7.81,5.07,13.23c0,6.38-2.17,11.53-6.51,15.46
+		c-4.34,3.93-10.03,5.9-17.07,5.9h-29.21v-5.54h5.54v-54.97h-5.54v-5.54h25.71c6.63,0,11.6,1.14,14.92,3.41
+		c3.31,2.27,4.97,5.67,4.97,10.18c0,2.9-1.06,5.41-3.17,7.53C325.46,228.73,322.54,230.16,318.81,230.92z M303.71,228.6h4.26
+		c3.35,0,5.91-0.73,7.69-2.2c1.78-1.47,2.68-3.57,2.68-6.32c0-2.78-0.95-4.88-2.84-6.32c-1.89-1.44-4.67-2.15-8.33-2.15h-3.46V228.6
+		z M303.71,234.71v30.82h4.73c5.37,0,9.39-1.28,12.07-3.84c2.68-2.56,4.02-6.39,4.02-11.51c0-4.96-1.33-8.77-3.98-11.46
+		c-2.65-2.68-6.44-4.02-11.36-4.02H303.71z"/>
+</g>
+<g>
+	<path d="M343.56,118.9V83.77l-4.31,1.18v-4.55l15.62-4.59h0.57l-0.09,7.77c3.31-2.71,6.38-4.73,9.21-6.06
+		c2.82-1.33,5.45-1.99,7.88-1.99c4.1,0,7.37,1.27,9.8,3.81c2.43,2.54,3.65,5.99,3.65,10.35v29.21h4.31v4.64h-20.5v-4.64h4.4V91.15
+		c0-2.37-0.6-4.17-1.8-5.42c-1.2-1.25-2.94-1.87-5.21-1.87c-1.86,0-3.83,0.47-5.9,1.42c-2.07,0.95-4.02,2.26-5.85,3.93v29.69h4.4
+		v4.64h-20.5v-4.64H343.56z"/>
+</g>
+<g>
+	<path d="M410.01,75.53h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31V83.77
+		l-4.31,1.18v-4.55L410.01,75.53z M397.04,65.82c0-1.8,0.66-3.36,1.99-4.69s2.92-1.99,4.78-1.99c1.89,0,3.49,0.65,4.78,1.94
+		c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01c-1.8,0-3.38-0.69-4.73-2.06
+		C397.72,69.21,397.04,67.62,397.04,65.82z"/>
+</g>
+<g>
+	<path d="M541.89,150.71h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L541.89,150.71z M528.92,141c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S528.92,142.8,528.92,141z"/>
+</g>
+<g>
+	<path d="M431.24,223.94h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L431.24,223.94z M418.27,214.24c0-1.8,0.66-3.36,1.99-4.69s2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.73-2.06C418.95,217.62,418.27,216.04,418.27,214.24z"/>
+</g>
+<g>
+	<path d="M592.52,150.71h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L592.52,150.71z M579.55,141c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S579.55,142.8,579.55,141z"/>
+</g>
+<g>
+	<path d="M583.44,223.54h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L583.44,223.54z M570.46,213.83c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S570.46,215.63,570.46,213.83z"/>
+</g>
+<g>
+	<path d="M658.36,150.71h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31
+		v-35.13l-4.31,1.18v-4.55L658.36,150.71z M645.38,141c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S645.38,142.8,645.38,141z"/>
+</g>
+<g>
+	<path d="M641.02,159.37l-8.48,7.81c-1.51-3.66-3.25-6.38-5.21-8.17c-1.96-1.78-4.2-2.67-6.72-2.67c-3.19,0-5.84,1.36-7.95,4.07
+		c-2.12,2.72-3.17,6.2-3.17,10.46c0,5.56,1.61,10.39,4.83,14.49c3.22,4.1,6.94,6.16,11.17,6.16c2.3,0,4.49-0.54,6.56-1.63
+		s3.99-2.71,5.75-4.85l2.7,2.32c-2.15,3.98-5,7.1-8.55,9.35c-3.55,2.26-7.39,3.39-11.53,3.39c-6.5,0-11.76-2.11-15.77-6.32
+		c-4.01-4.21-6.01-9.71-6.01-16.5c0-7.29,2.42-13.54,7.27-18.75s10.6-7.81,17.26-7.81c3.5,0,6.74,0.72,9.71,2.15
+		C635.85,154.3,638.56,156.47,641.02,159.37z"/>
+</g>
+<g>
+	<path d="M550.23,198.72v-4.64h4.31v-34.61h-6.34l2.22-6.01h4.78c-0.95-1.26-1.66-2.5-2.13-3.72c-0.47-1.21-0.71-2.44-0.71-3.67
+		c0-3.63,1.78-6.99,5.35-10.09c3.57-3.09,7.42-4.64,11.55-4.64c2.11,0,4.09,0.4,5.92,1.18c1.83,0.79,3.38,1.91,4.64,3.36l-7.48,6.2
+		c-1.42-1.89-2.6-3.19-3.53-3.88c-0.93-0.69-1.89-1.04-2.86-1.04c-1.45,0-2.64,0.53-3.55,1.59c-0.92,1.06-1.37,2.42-1.37,4.1
+		c0,2.94,1.09,5.44,3.27,7.5c2.18,2.07,4.86,3.1,8.05,3.1h4.5l-2.27,6.01h-8.24v34.61h6.53v4.64H550.23z"/>
+</g>
+<g>
+	<path d="M428.16,75.58c0.28,1.52,0.69,3.08,1.23,4.69s1.18,3.27,1.94,4.97c2.75-3.6,5.08-6.07,7.01-7.41
+		c1.93-1.34,3.99-2.01,6.2-2.01c1.48,0,3.57,0.32,6.25,0.97c2.68,0.65,4.61,0.97,5.78,0.97c0.82,0,1.59-0.12,2.32-0.36
+		c0.73-0.24,1.56-0.65,2.51-1.25l2.04,2.04c-0.79,1.29-1.8,3.36-3.03,6.2c-0.22,0.6-0.39,1.04-0.52,1.33l-12.74,30.35
+		c-0.51,1.29-0.95,2.55-1.33,3.76c-0.38,1.22-0.71,2.45-0.99,3.72h-9.52c-0.38-1.52-1.12-3.52-2.22-6.01
+		c-0.13-0.32-0.22-0.54-0.28-0.66l-13.97-31.72l-3.88,1.66l-1.61-3.69L428.16,75.58z M454.54,85.24c-0.51,0.38-1.03,0.66-1.56,0.83
+		c-0.54,0.17-1.21,0.26-2.04,0.26c-0.98,0-2.67-0.35-5.07-1.06c-2.4-0.71-4.14-1.07-5.21-1.07c-1.39,0-2.74,0.39-4.05,1.16
+		c-1.31,0.77-2.58,1.93-3.81,3.48l10.18,24.05L454.54,85.24z"/>
+</g>
+<g>
+	<path d="M448.32,224.02c0.28,1.52,0.69,3.08,1.23,4.69c0.54,1.61,1.18,3.27,1.94,4.97c2.75-3.6,5.08-6.07,7.01-7.41
+		c1.93-1.34,3.99-2.01,6.2-2.01c1.48,0,3.57,0.32,6.25,0.97c2.68,0.65,4.61,0.97,5.78,0.97c0.82,0,1.59-0.12,2.32-0.36
+		c0.73-0.24,1.56-0.65,2.51-1.25l2.04,2.04c-0.79,1.29-1.8,3.36-3.03,6.2c-0.22,0.6-0.4,1.04-0.52,1.33l-12.74,30.35
+		c-0.51,1.29-0.95,2.55-1.33,3.76c-0.38,1.22-0.71,2.45-0.99,3.72h-9.52c-0.38-1.52-1.12-3.52-2.22-6.01
+		c-0.13-0.32-0.22-0.54-0.28-0.66l-13.97-31.72l-3.88,1.66l-1.61-3.69L448.32,224.02z M474.69,233.68c-0.5,0.38-1.03,0.66-1.56,0.83
+		c-0.54,0.17-1.21,0.26-2.04,0.26c-0.98,0-2.67-0.35-5.07-1.06c-2.4-0.71-4.14-1.07-5.21-1.07c-1.39,0-2.74,0.39-4.05,1.16
+		c-1.31,0.77-2.58,1.93-3.81,3.48l10.18,24.05L474.69,233.68z"/>
+</g>
+<g>
+	<path d="M498.19,96.08l-24.34,7.86c1.26,3.91,3.16,6.9,5.68,8.95c2.53,2.05,5.57,3.08,9.14,3.08c2.46,0,4.79-0.46,6.98-1.37
+		s4.27-2.29,6.23-4.12l2.89,2.98c-2.87,3.69-6.23,6.53-10.06,8.5c-3.84,1.97-7.92,2.96-12.24,2.96c-6.34,0-11.55-2.29-15.6-6.87
+		c-4.06-4.58-6.08-10.4-6.08-17.47c0-7.07,2.24-13,6.72-17.78c4.48-4.78,9.93-7.17,16.33-7.17c3,0,5.8,0.63,8.4,1.89
+		c2.6,1.26,4.95,3.12,7.03,5.59c1.45,1.77,2.7,3.78,3.74,6.04c1.04,2.26,1.56,3.76,1.56,4.52c0,0.47-0.96,0.96-2.89,1.47
+		C500.31,95.48,499.14,95.79,498.19,96.08z M492.56,92.43c-1.17-3.6-2.75-6.38-4.74-8.33c-1.99-1.96-4.21-2.94-6.68-2.94
+		c-2.68,0-4.91,1.18-6.68,3.55c-1.77,2.37-2.65,5.32-2.65,8.85c0,0.88,0.04,1.76,0.12,2.63s0.2,1.73,0.36,2.58L492.56,92.43z"/>
+</g>
+<g>
+	<path d="M537.96,75.25l3.79,1.66l-5.73,12.59c-1.67-1.1-3.07-1.86-4.19-2.27c-1.12-0.41-2.25-0.62-3.39-0.62
+		c-1.83,0-3.31,0.7-4.43,2.11c-1.12,1.41-1.68,3.35-1.68,5.85v24.34h5.54v4.64h-21.64v-4.64h4.31V90.78
+		c-0.03-1.42-0.17-2.34-0.4-2.77c-0.24-0.43-0.69-0.83-1.35-1.21l-2.04,2.13l-3.22-2.94l8.24-10.46c2.53,1.33,4.47,2.66,5.85,4
+		c1.37,1.34,2.38,2.9,3.01,4.66c1.7-3.19,3.25-5.43,4.64-6.72c1.39-1.29,2.87-1.94,4.45-1.94c0.88,0,1.9,0.19,3.05,0.57
+		s2.36,0.93,3.62,1.66L537.96,75.25z"/>
+</g>
+<g>
+	<path d="M561.85,223.69l3.79,1.66l-5.73,12.59c-1.67-1.1-3.07-1.86-4.19-2.27c-1.12-0.41-2.25-0.62-3.39-0.62
+		c-1.83,0-3.31,0.7-4.43,2.11c-1.12,1.41-1.68,3.35-1.68,5.85v24.34h5.54v4.64h-21.64v-4.64h4.31v-28.12
+		c-0.03-1.42-0.17-2.34-0.4-2.77c-0.24-0.43-0.69-0.83-1.35-1.21l-2.04,2.13l-3.22-2.94l8.24-10.46c2.53,1.33,4.47,2.66,5.85,4
+		c1.37,1.34,2.38,2.9,3.01,4.66c1.7-3.19,3.25-5.43,4.64-6.72c1.39-1.29,2.87-1.94,4.45-1.94c0.88,0,1.9,0.19,3.05,0.57
+		s2.36,0.93,3.62,1.66L561.85,223.69z"/>
+</g>
+<g>
+	<path d="M571.21,80.31l-5.16,7.72c-2.56-2.43-4.83-4.2-6.82-5.3s-3.91-1.66-5.78-1.66c-1.39,0-2.55,0.42-3.48,1.25
+		c-0.93,0.84-1.4,1.87-1.4,3.1c0,2.49,3.82,5.44,11.46,8.85c0.16,0.06,0.3,0.13,0.43,0.19c4.83,2.15,8.05,4.24,9.66,6.27
+		c1.61,2.04,2.41,4.7,2.41,7.98c0,4.51-1.82,8.34-5.44,11.48c-3.63,3.14-8.11,4.71-13.45,4.71c-3.28,0-6.45-0.61-9.49-1.82
+		c-3.05-1.21-5.74-2.94-8.07-5.18l6.39-8.81c3.09,3.35,5.88,5.78,8.36,7.32c2.48,1.53,4.87,2.3,7.17,2.3c1.74,0,3.17-0.53,4.31-1.59
+		c1.14-1.06,1.7-2.41,1.7-4.05c0-2.46-2.95-5.1-8.85-7.91c-0.35-0.16-0.58-0.27-0.71-0.33c-6.22-3-10.16-5.53-11.81-7.6
+		c-1.66-2.07-2.49-4.65-2.49-7.74c0-4.01,1.53-7.34,4.59-9.99c3.06-2.65,6.96-3.98,11.69-3.98c2.56,0,5.04,0.4,7.46,1.18
+		C566.31,77.5,568.75,78.7,571.21,80.31z"/>
+</g>
+<g>
+	<path d="M590.63,75.53h0.52c-0.16,1.33-0.27,2.56-0.33,3.72c-0.06,1.15-0.09,2.22-0.09,3.2v36.46h4.4v4.64h-20.5v-4.64h4.31V83.77
+		l-4.31,1.18v-4.55L590.63,75.53z M577.66,65.82c0-1.8,0.66-3.36,1.99-4.69c1.33-1.33,2.92-1.99,4.78-1.99
+		c1.89,0,3.49,0.65,4.78,1.94c1.29,1.29,1.94,2.87,1.94,4.73c0,1.86-0.66,3.46-1.99,4.81c-1.33,1.34-2.9,2.01-4.73,2.01
+		c-1.8,0-3.38-0.69-4.74-2.06S577.66,67.62,577.66,65.82z"/>
+</g>
+<g>
+	<path d="M644.78,56.64v4.83l-4.17,1.47v55.97h4.36v4.64h-15.25l-0.95-5.45c-2.27,2.24-4.64,3.94-7.1,5.09s-4.91,1.73-7.34,1.73
+		c-5.49,0-9.97-2.11-13.42-6.34c-3.46-4.23-5.18-9.75-5.18-16.57c0-7.54,2.14-13.84,6.42-18.89c4.28-5.05,9.43-7.58,15.46-7.58
+		c2.05,0,3.99,0.29,5.82,0.88c1.83,0.58,3.61,1.46,5.35,2.63V66.82l-4.36,1.47v-4.88L644.78,56.64z M628.78,91.44
+		c0-3.35-0.87-5.96-2.6-7.84c-1.74-1.88-4.14-2.82-7.2-2.82c-3.28,0-6.01,1.59-8.19,4.76c-2.18,3.17-3.27,7.27-3.27,12.29
+		c0,5.59,1.2,10.17,3.6,13.75c2.4,3.58,5.41,5.37,9.04,5.37c1.55,0,3.08-0.39,4.62-1.16c1.53-0.77,2.86-1.84,4-3.2V91.44z"/>
+</g>
+<g>
+	<path d="M656.83,74.49l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L656.83,74.49z
+		 M676.24,97.78c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V97.78z"/>
+</g>
+<g>
+	<path d="M674.28,149.66l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L674.28,149.66z
+		 M693.69,172.96c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V172.96z"/>
+</g>
+<g>
+	<path d="M491.37,222.49l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L491.37,222.49z
+		 M510.78,245.79c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V245.79z"/>
+</g>
+<g>
+	<path d="M596.7,222.93l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L596.7,222.93z
+		 M616.12,246.22c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V246.22z"/>
+</g>
+<g>
+	<path d="M697.61,222.93l4.17,1.23l-0.85,3.31c2.05-1.17,4.07-2.04,6.06-2.63c1.99-0.58,3.98-0.88,5.97-0.88
+		c5.3,0,9.28,1.35,11.93,4.05c2.65,2.7,3.98,6.75,3.98,12.15v27.18h4.26v4.64h-15.01l-1.09-5.35c-2.08,2.24-4.29,3.92-6.63,5.04
+		c-2.34,1.12-4.81,1.68-7.43,1.68c-4.29,0-7.88-1.47-10.77-4.4c-2.89-2.94-4.33-6.55-4.33-10.84c0-5.4,2-9.52,6.01-12.38
+		c4.01-2.86,9.78-4.29,17.33-4.29c0.98,0,1.95,0.02,2.91,0.07s1.93,0.12,2.91,0.21v-3.31c0-2.37-0.68-4.21-2.04-5.54
+		c-1.36-1.33-3.27-1.99-5.73-1.99c-2.4,0-4.61,0.67-6.63,2.01c-2.02,1.34-3.72,3.29-5.11,5.85l-4.45-1.56L697.61,222.93z
+		 M717.02,246.22c-0.73-0.13-1.44-0.21-2.15-0.26c-0.71-0.05-1.51-0.07-2.39-0.07c-3.95,0-7.13,0.99-9.56,2.98
+		c-2.43,1.99-3.65,4.58-3.65,7.77c0,2.71,0.82,4.92,2.46,6.6c1.64,1.69,3.77,2.53,6.39,2.53c2.81,0,5-0.9,6.56-2.7
+		c1.56-1.8,2.34-4.36,2.34-7.67V246.22z"/>
+</g>
+<g>
+	<path d="M418.28,199.12c-7.32,0-13.4-2.33-18.23-6.98c-4.83-4.66-7.24-10.55-7.24-17.68s2.41-13.04,7.24-17.71
+		c4.83-4.67,10.91-7.01,18.23-7.01c7.35,0,13.45,2.34,18.28,7.01c4.83,4.67,7.24,10.57,7.24,17.71c0,7.17-2.41,13.07-7.24,17.71
+		C431.73,196.8,425.64,199.12,418.28,199.12z M405.21,170.81c0,6.38,1.48,11.81,4.43,16.31c2.95,4.5,6.45,6.75,10.49,6.75
+		c3.47,0,6.22-1.4,8.24-4.19c2.02-2.79,3.03-6.64,3.03-11.53c0-6.44-1.49-11.91-4.47-16.41c-2.98-4.5-6.54-6.75-10.68-6.75
+		c-3.35,0-6.02,1.42-8.03,4.26C406.22,162.09,405.21,165.95,405.21,170.81z"/>
+</g>
+<g>
+	<path d="M364.44,272.92c-7.32,0-13.4-2.33-18.23-6.98c-4.83-4.66-7.24-10.55-7.24-17.68s2.41-13.04,7.24-17.71
+		c4.83-4.67,10.91-7.01,18.23-7.01c7.35,0,13.45,2.34,18.28,7.01c4.83,4.67,7.24,10.57,7.24,17.71c0,7.17-2.41,13.07-7.24,17.71
+		C377.89,270.6,371.79,272.92,364.44,272.92z M351.37,244.61c0,6.38,1.48,11.81,4.43,16.31c2.95,4.5,6.45,6.75,10.49,6.75
+		c3.47,0,6.22-1.4,8.24-4.19c2.02-2.79,3.03-6.64,3.03-11.53c0-6.44-1.49-11.91-4.47-16.41s-6.54-6.75-10.68-6.75
+		c-3.35,0-6.02,1.42-8.03,4.26C352.37,235.89,351.37,239.75,351.37,244.61z"/>
+</g>
+<g>
+	<path d="M412.05,205.05v4.83l-4.17,1.47v55.97h4.26v4.64h-20.45v-4.64h4.36v-52.08l-4.36,1.47v-4.88L412.05,205.05z"/>
+</g>
+<g>
+	<path d="M449.41,194.08v-35.13l-4.31,1.18v-4.55l15.63-4.59h0.57l-0.09,7.77c3.31-2.71,6.38-4.73,9.21-6.06
+		c2.82-1.33,5.45-1.99,7.88-1.99c4.1,0,7.37,1.27,9.8,3.81c2.43,2.54,3.65,5.99,3.65,10.35v29.21h4.31v4.64h-20.5v-4.64h4.4v-27.75
+		c0-2.37-0.6-4.17-1.8-5.42c-1.2-1.25-2.94-1.87-5.21-1.87c-1.86,0-3.83,0.47-5.9,1.42s-4.02,2.26-5.85,3.93v29.69h4.4v4.64h-20.5
+		v-4.64H449.41z"/>
+</g>
+<g>
+	<path d="M639.42,267.34v-35.13l-4.31,1.18v-4.55l15.63-4.59h0.57l-0.09,7.77c3.31-2.71,6.38-4.73,9.21-6.06
+		c2.82-1.33,5.45-1.99,7.88-1.99c4.1,0,7.37,1.27,9.8,3.81c2.43,2.54,3.65,5.99,3.65,10.35v29.21h4.31v4.64h-20.5v-4.64h4.4v-27.75
+		c0-2.37-0.6-4.17-1.8-5.42c-1.2-1.25-2.94-1.87-5.21-1.87c-1.86,0-3.83,0.47-5.9,1.42s-4.02,2.26-5.85,3.93v29.69h4.4v4.64h-20.5
+		v-4.64H639.42z"/>
+</g>
+<g>
+	<path d="M511.24,141.33l3.27,0.76v10.46h9.23l-0.62,3.88c-0.13,0.82-0.33,1.37-0.62,1.63c-0.28,0.27-0.88,0.4-1.8,0.4h-6.2v27.75
+		c0,2.4,0.35,4.13,1.06,5.18c0.71,1.06,1.84,1.59,3.39,1.59c0.69,0,1.4-0.13,2.11-0.38c0.71-0.25,1.57-0.71,2.58-1.37l2.04,3.03
+		c-2.02,1.93-4.14,3.38-6.37,4.36s-4.51,1.47-6.84,1.47c-3.47,0-5.99-0.92-7.55-2.75c-1.56-1.83-2.34-4.8-2.34-8.9v-29.97h-4.92
+		v-3.79c3.41-1.42,6.24-3.24,8.5-5.47C508.41,146.99,510.1,144.36,511.24,141.33z"/>
+</g>
+<g>
+	<path d="M743.13,56.64v4.83l-4.17,1.47v55.97h4.36v4.64h-15.25l-0.95-5.45c-2.27,2.24-4.64,3.94-7.1,5.09s-4.91,1.73-7.34,1.73
+		c-5.49,0-9.97-2.11-13.42-6.34c-3.46-4.23-5.18-9.75-5.18-16.57c0-7.54,2.14-13.84,6.42-18.89c4.28-5.05,9.43-7.58,15.46-7.58
+		c2.05,0,3.99,0.29,5.82,0.88c1.83,0.58,3.61,1.46,5.35,2.63V66.82l-4.36,1.47v-4.88L743.13,56.64z M727.13,91.44
+		c0-3.35-0.87-5.96-2.6-7.84c-1.74-1.88-4.14-2.82-7.2-2.82c-3.28,0-6.01,1.59-8.19,4.76c-2.18,3.17-3.27,7.27-3.27,12.29
+		c0,5.59,1.2,10.17,3.6,13.75c2.4,3.58,5.41,5.37,9.04,5.37c1.55,0,3.08-0.39,4.62-1.16c1.53-0.77,2.86-1.84,4-3.2V91.44z"/>
+</g>
+</svg></div>
+    <div class="inst-meta"><div><b>Maestría en Filosofía</b></div><div>Diálogos con la tradición filosófica</div></div>
+  </div>
+</header>
+
+<div class="box">
+  <p class="kick">Epicuro · Carta a Meneceo</p>
+  <h1>Medicina para <em>mortales</em></h1>
+  <p class="lead">La Carta a Meneceo puede leerse como una filosofía de la finitud: no promete escapar de los límites humanos, sino aprender a vivir bien dentro de ellos. Sus cuatro «remedios», el cuadrifármaco, responden a cuatro formas en que experimentamos que somos finitos y frágiles.</p>
+  <p class="by">Elaborado por <strong>Niver O. Vargas</strong></p>
+
+  <div class="frame">
+    <span class="lat" lang="la">Non fui, fui, non sum, non curo.</span>
+    <p>«No era, fui, no soy, no me importa»: epitafio romano de tradición epicúrea que condensa la actitud de la Carta ante el límite de la vida.</p>
+  </div>
+
+  <p class="kit-h">El cuadrifármaco frente a la finitud · pulse cada remedio</p>
+  <div class="kit" role="tablist" aria-label="Cuadrifármaco">
+    <button class="ph" role="tab" id="ph-0" aria-controls="pn-0" aria-selected="true"><span class="lim">Fragilidad</span><span class="rx">No temer a los dioses</span></button>
+    <button class="ph" role="tab" id="ph-1" aria-controls="pn-1" aria-selected="false" tabindex="-1"><span class="lim">Mortalidad</span><span class="rx">No temer a la muerte</span></button>
+    <button class="ph" role="tab" id="ph-2" aria-controls="pn-2" aria-selected="false" tabindex="-1"><span class="lim">Necesidad</span><span class="rx">El bien es fácil de procurar</span></button>
+    <button class="ph" role="tab" id="ph-3" aria-controls="pn-3" aria-selected="false" tabindex="-1"><span class="lim">Dolor y azar</span><span class="rx">El mal es fácil de soportar</span></button>
+  </div>
+
+  <section class="panel" role="tabpanel" id="pn-0" aria-labelledby="ph-0">
+    <h2>Un ser frágil no necesita dioses que lo amenacen</h2>
+    <div class="cols">
+      <div class="carta"><h3>Lo que dice la Carta</h3><p>Los dioses existen, pero son incorruptibles y dichosos: no castigan ni premian. Lo impío no es rechazar los dioses de la gente, sino atribuirles las opiniones de la gente.</p></div>
+      <div class="fin"><h3>Desde la finitud</h3><p>Quien se sabe frágil tiende a proyectar sus miedos en poderes superiores. Epicuro libera esa fragilidad del terror: los dioses, ataráxicos, no son jueces del mortal sino <b>modelo</b> de la serenidad a la que aspira.</p></div>
+    </div>
+    <div class="ex"><b>Ejercicio</b><span>Distinguir qué temores nacen de la realidad y cuáles de opiniones heredadas de la multitud.</span></div>
+    <p class="ask"><span>?</span>¿Qué «dioses» temen hoy los seres humanos, y cómo se liberaría de ellos un lector de Epicuro?</p>
+  </section>
+
+  <section class="panel" role="tabpanel" id="pn-1" aria-labelledby="ph-1" hidden>
+    <h2>La muerte no es nada para nosotros</h2>
+    <div class="cols">
+      <div class="carta"><h3>Lo que dice la Carta</h3><p>Todo bien y todo mal están en la sensación, y la muerte es su pérdida. Mientras somos, la muerte no está; cuando ella llega, ya no somos. Por eso <span class="quote">«el arte de vivir bien y el de morir bien es el mismo»</span>.</p></div>
+      <div class="fin"><h3>Desde la finitud</h3><p>La Carta no añade tiempo a la vida: suprime el <b>anhelo de inmortalidad</b>. Aceptar el límite hace «amable» la mortalidad y desplaza la pregunta de cuánto se vive a cómo se vive: el sabio goza del tiempo más agradable, no del más largo.</p></div>
+    </div>
+    <div class="ex"><b>Ejercicio</b><span>Meditar en el carácter breve del tiempo propio para valorar el presente sin la angustia de la espera.</span></div>
+    <p class="ask"><span>?</span>¿Es posible amar la vida precisamente porque termina, o la finitud siempre nos deja una herida?</p>
+  </section>
+
+  <section class="panel" role="tabpanel" id="pn-2" aria-labelledby="ph-2" hidden>
+    <h2>Un ser limitado necesita poco</h2>
+    <div class="cols">
+      <div class="carta"><h3>Lo que dice la Carta</h3><p>Hay deseos naturales y necesarios, naturales no necesarios, y vanos. Lo natural es fácil de conseguir; lo vano, muy difícil. Pan y agua dan el mayor placer a quien tiene necesidad. El placer es ausencia de dolor en el cuerpo y de turbación en el alma.</p></div>
+      <div class="fin"><h3>Desde la finitud</h3><p>Los deseos vanos son, en el fondo, deseos de infinito: más poder, más riqueza, más tiempo. La <b>autarquía</b> epicúrea ajusta el deseo a la medida humana; la prudencia calcula qué elegir y qué rechazar para no vivir esclavo de lo ilimitado.</p></div>
+    </div>
+    <div class="ex"><b>Ejercicio</b><span>Clasificar los propios deseos según las tres clases de Epicuro y renunciar a uno vano.</span></div>
+    <p class="ask"><span>?</span>¿Qué deseos de nuestra cultura de consumo son, en términos epicúreos, deseos vanos e ilimitados?</p>
+  </section>
+
+  <section class="panel" role="tabpanel" id="pn-3" aria-labelledby="ph-3" hidden>
+    <h2>El dolor tiene límite; el futuro no es del todo nuestro</h2>
+    <div class="cols">
+      <div class="carta"><h3>Lo que dice la Carta</h3><p>Los males son breves o leves. Unas cosas ocurren por necesidad, otras por azar y otras dependen de nosotros. El futuro <span class="quote">«no es nuestro, pero tampoco es enteramente no nuestro»</span>.</p></div>
+      <div class="fin"><h3>Desde la finitud</h3><p>El ser humano no controla el azar, pero tampoco está entregado a un destino inexorable. Entre la esperanza absoluta y la desesperación, Epicuro sitúa un espacio de <b>libertad</b>: preferir ser desdichado con sensatez a ser afortunado con insensatez.</p></div>
+    </div>
+    <div class="ex"><b>Ejercicio</b><span>Ante una preocupación, preguntarse qué parte depende de mí y actuar solo sobre ella, sin devolver el mal recibido.</span></div>
+    <p class="ask"><span>?</span>¿Cómo conjugar la serenidad epicúrea con la incertidumbre propia de una vida finita?</p>
+  </section>
+
+  <div class="close">
+    <div><b>Filosofar a toda edad</b>La Carta abre invitando a jóvenes y viejos a filosofar: la salud del alma no tiene momento prematuro ni tardío, porque el tiempo de la felicidad es siempre el presente.</div>
+    <div><b>«Un dios entre los hombres»</b>Sin dejar de ser mortal, quien vive conforme a estos remedios y cultiva la amistad alcanza una serenidad que la Carta compara con la divina.</div>
+  </div>
+</div>
+
+<footer class="refs">
+  <b>Referencias</b>
+  <p>Carmona, I. D. (2022). <a href="https://virtual.upb.edu.co/content/enforced/91813-5568-2001-202642-52822/Documentos/U2/Act1/U2_A1_Carta%20a%20Meneceo%20de%20Epicuro/index.html?isCourseFile=true&amp;ou=91813" target="_blank" rel="noopener"><i>La Carta a Meneceo de Epicuro</i></a> [OVA]. Universidad Pontificia Bolivariana.</p>
+  <p>Fundación Juan March. (2022, 15 de junio). <a href="https://www.youtube.com/watch?v=6F0lpavPQi0" target="_blank" rel="noopener"><i>Epicuro y algunos epicúreos, Carlos García Gual</i></a> [Video]. YouTube.</p>
+</footer>
+
+<script>
+(function(){
+const t=[...document.querySelectorAll('.ph')];
+function sel(i,f){t.forEach((b,j)=>{const on=i===j;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;document.getElementById('pn-'+j).hidden=!on;});if(f)t[i].focus({preventScroll:true});}
+t.forEach((b,i)=>{b.addEventListener('click',()=>sel(i));b.addEventListener('keydown',e=>{if(e.key==='ArrowRight')sel((i+1)%4,1);if(e.key==='ArrowLeft')sel((i+3)%4,1);});});
+})();
+</script>
+
+</body>
+</html>
